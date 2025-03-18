@@ -1,0 +1,358 @@
+/* CSS for sliding effect */
+.main-menu nav ul li > a{
+  font-size: 10px;
+  font-weight: bold;
+}
+.select-size{
+  cursor: pointer;
+  
+}
+
+.product-brandName{
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  max-width: max-content;
+}
+
+h3 select{
+  width: auto;
+}
+.products-img {
+  position: relative;
+  overflow: hidden;
+  width: 300px; /* Adjust the width as needed */
+  height: 300px; /* Adjust the height as needed */
+  border: 1px solid #ccc; /* Add a border for visibility */
+}
+
+.products-img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  transition: transform 0.9s ease;
+}
+
+.products-img:hover img {
+  transform: translateX(-100%);
+}
+
+.default-btn {
+  background-color: blue;
+}
+
+.search-history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  border: 0px solid #ccc;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  width: 110%;
+
+}
+.feedback-button {
+  background-color: rgb(118, 181, 235);
+}
+.feedback-form form {
+  width: 200%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.feedback-form label {
+  margin-bottom: 5px;
+  width: 200%;
+
+  font-size: 14px; /* Reduce font size for labels */
+}
+
+.feedback-form textarea {
+  margin-bottom: 10px;
+
+  font-size: 14px; /* Reduce font size for textarea */
+}
+
+.feedback-form input[type="submit"] {
+  padding: 6px 12px; /* Reduce padding */
+  font-size: 14px; /* Reduce font size for submit button */
+  background-color: #4592e4;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.feedback-form input[type="submit"]:hover {
+  background-color: #177fed;
+}
+.shopping-cart-delete {
+  display: flex;
+  flex-direction: column; /* Display items vertically */
+  align-items: flex-start; /* Align items to the start of the container */
+  padding-left: 240px;
+}
+
+
+.shopping-cart-delete button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px; /* Adjust the margin as needed */
+}
+
+.shopping-cart-delete button i {
+  color: red; /* Change the color to red */
+  font-size: 18px; /* Adjust the font size */
+}
+
+.shopping-cart-delete button:hover i {
+  color: darkred; /* Change the color on hover */
+}
+
+.quantity-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.quantity-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+.quantity-button:hover {
+  color: #007bff; /* Change color on hover */
+}
+
+.quantity-button.plus {
+  margin-bottom: 5px; /* Adjust spacing between buttons */
+}
+
+.quantity-button.minus {
+  margin-bottom: 5px; /* Adjust spacing between buttons */
+}
+/* Styles for the quantity buttons */
+.quantity-button {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+/* Styles for the minus button */
+.minus {
+  margin-right: 10px; /* Adjust as needed */
+}
+
+/* Styles for the plus button */
+.plus {
+  margin-left: 10px; 
+}
+
+/* Styles for the quantity display */
+.quantity-display {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #ccc;
+  text-align: center;
+  line-height: 15px;
+  margin: 0 5px; /* Adjust as needed */
+}
+/* .quantity-display {
+  user-select: none; 
+  pointer-events: none; 
+} */
+
+.disabled {
+  opacity: 0.5; 
+  cursor: not-allowed; /* Change the cursor to indicate that the button is not clickable */
+}
+.header-search-small-display{
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  /* General Styles for Mobile */
+  body {
+    font-size: 14px; /* Adjust base font size for readability */
+  }
+
+  .main-menu nav ul li > a {
+    font-size: 12px; /* Slightly smaller font size for menu items */
+  }
+  .header-search-small-display{
+    display: contents;
+  }
+.home-search-disabled-small-screen{
+  display: none;
+}
+.input-home-style{
+  width: 180px !important;
+  font-size: 6px !important;
+  height: auto;
+  max-width: 200px;
+}
+.GOW-logo-header{
+  width: 50px !important;
+  height: auto;
+}
+  /* Product Image for Mobile */
+  .products-img {
+    max-width: 100%;
+    height: 300px; /* Ensure proportional scaling */
+    width: 500px;
+    border: none;
+  }
+
+  .products-img img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Product Brand Name */
+  .product-brandName {
+    font-size: 14px;
+    padding: 5px;
+    text-align: center;
+    margin: 10px auto;
+  }
+
+  /* Feedback Form */
+  .feedback-form {
+    padding: 10px;
+    width: 100%;
+    margin: auto;
+    background-color: #f9f9f9;
+  }
+
+  .feedback-form label,
+  .feedback-form textarea,
+  .feedback-form input[type="submit"] {
+    font-size: 12px;
+  }
+
+  .feedback-form input[type="submit"] {
+    padding: 8px;
+  }
+
+  /* Slider Image */
+  .slider-single-img img {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .slider-area {
+    width: 100%;
+    height: auto;
+  }
+
+  .slider-btn a {
+    font-size: 12px; /* Adjust button text size */
+  }
+
+  /* Shopping Cart */
+  .shopping-cart-delete {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 10px;
+  }
+
+  .shopping-cart-delete button i {
+    font-size: 14px;
+  }
+
+  /* Quantity Buttons */
+  .quantity-buttons {
+    gap: 5px;
+  }
+
+  .quantity-button {
+    width: 25px;
+    height: 25px;
+    font-size: 14px;
+    line-height: 25px;
+  }
+
+  .quantity-display {
+    width: 50px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 12px;
+  }
+
+  /* Tabs for Mobile */
+  .product-tab-list {
+    display: flex;
+    overflow-x: auto;
+    padding: 5px 0;
+    gap: 8px;
+  }
+
+  .product-tab-list a {
+    flex: 1;
+    text-align: center;
+    font-size: 10px;
+    padding: 1px;
+  }
+
+  /* Adjusted Zoom Lens */
+  .img-zoom-lens {
+    width: 30px;
+    height: 30px;
+  }
+
+  .img-zoom-result {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+
+
+
+
+  
+* {box-sizing: border-box;}
+
+.img-zoom-container {
+  position: relative;
+}
+
+.img-zoom-lens {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  /*set the size of the lens:*/
+  width: 40px;
+  height: 40px;
+}
+
+.img-zoom-result {
+  border: 1px solid #d4d4d4;
+  /*set the size of the result div:*/
+  width: 300px;
+  height: 300px;
+}
+

@@ -1,0 +1,265 @@
+/* styles.css */
+.time-icon {
+  font-size: 2em; /* Adjust the font size as needed to make the icon larger */
+  font-weight: bold; /* Make the icon bold */
+}
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.blinking {
+  animation: blink 1s infinite;
+}
+
+.puncture-repair-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    float: left; /* Add this to align the form on the left */
+    margin-right: 20px; /* Add some spacing between the form and other content */
+
+}
+.container {
+    margin: 10px auto; /* Center the container */
+    max-width: 1400px; /* Set a maximum width for the container */
+}
+.puncture-repair-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.puncture-repair-form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensure padding is included in width */
+    margin-bottom: 10px;
+}
+
+.puncture-repair-form button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 20px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.puncture-repair-form button:hover {
+    background-color: #0056b3;
+}
+
+.submitted-data {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    width: auto;
+  }
+  
+  .submitted-data h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: white;
+  }
+  
+  .submitted-data p {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #666;
+  }
+  
+  /* 8888888888 Puncture List CSS 88888888888888888888888888888888 */
+
+  /* PunctureRepairList.css */
+
+.puncture-repair-list-container {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 1200px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center; 
+    height: 300px;
+  }
+  /* select {
+    width: 190px; 
+  } */
+  
+  .puncture-repair-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+    background-color: #a6c3e1;
+  }
+  
+  .puncture-repair-list-header-item {
+    font-weight: bold;
+    flex: 1;
+    text-align: center;
+    border-right: 1px solid #ccc;
+  }
+
+  .puncture-repair-list-header-item:last-child {
+    border-right: none; /* Remove right border for last column */
+}
+
+  
+  .puncture-repair-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .puncture-repair-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+    
+  }
+  
+  .puncture-repair-item span {
+    flex: 1;
+    text-align: center;
+    border-right: 1px solid #000; 
+  }
+  .puncture-repair-list input{
+    width: 70%;
+    margin-left: 30px;
+  }
+  .puncture-repair-item span:last-child {
+    border-right: none; /* Remove right border for the last span in each row */
+  }
+  
+  h2 {
+    background-color: #134274; /* Blue background color */
+    color: white; /* White text color */
+    padding: 5px; /* Add padding for better appearance */
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  /* Add this to your CSS file */
+.red {
+  color: rgb(15, 1, 1);
+  background-color: rgb(245, 5, 5);
+}
+
+.orange {
+  color: rgb(17, 11, 1);
+  background-color: rgb(193, 126, 3);
+  animation: blinker 1s linear infinite; /* Blinking effect */
+}
+
+.green {
+  color: black;
+  background-color:green;
+}
+
+.blue {
+  color: rgb(5, 0, 0);
+  background-color:#184e89;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.green {
+  color: rgb(1, 20, 1);
+  background-color: green;
+}
+
+@media screen and (max-width: 768px) {
+  .puncture-repair-form {
+    max-width: 100%; /* Adjust width to fit smaller screens */
+    margin: 0 auto;
+    float: none; /* Remove float to center the form */
+    margin-bottom: 20px; /* Add some spacing between the form and other content */
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+
+  .puncture-repair-form input[type="text"] {
+    width: 100%; /* Set input width to 100% for smaller screens */
+    padding: 10px; /* Adjust padding for smaller screens */
+
+  }
+
+  .map-container {
+    width: 100%; /* Set width to 100% for smaller screens */
+    padding-top: 200px;  
+    height: 300px;
+  }
+  .puncture-repair-list-container {
+    width: 100%; /* Set width to 100% for smaller screens */
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+  .puncture-repair-list-header-item:last-child {
+    margin-right: 20px;
+  }
+
+
+  h2{
+    font-size: 21px;
+  }
+
+
+  .puncture-repair-list-header {
+    flex-direction: row; /* Change flex direction to column for smaller screens */
+  }
+
+  .puncture-repair-list-header-item {
+    flex: none; /* Remove flex property to prevent items from stretching */
+    width: auto; /* Set width to auto for smaller screens */
+    border-right: none; /* Remove right border for smaller screens */
+    border-bottom: 1px solid #ccc; /* Add bottom border for smaller screens */
+  }
+  .puncture-repair-list-header-item:nth-child(5){
+    margin-left: 0px;}
+
+  .puncture-repair-item {
+    flex-direction: row; /* Change flex direction to column for smaller screens */
+  }
+
+  .puncture-repair-item span {
+    border-right: none; /* Remove right border for smaller screens */
+    border-bottom: 1px solid #ccc; /* Add bottom border for smaller screens */
+  }
+
+  .puncture-repair-list input {
+
+    width: 70%; /* Set input width to 100% for smaller screens */
+    margin-left: 10%; /* Remove left margin for smaller screens */
+    margin-top: 10px; /* Add top margin for smaller screens */
+  }
+  .puncture-repair-list select{
+    margin-left: 15px;
+    width: 70%;
+    font-size: 10px;
+  }
+
+  /* Hide location and vehicle number on mobile */
+  .puncture-repair-list-header-item:nth-child(1),
+  .puncture-repair-item span:nth-child(1),
+  .puncture-repair-list-header-item:nth-child(3),
+  .puncture-repair-item span:nth-child(3) {
+    display: none;
+  }
+}

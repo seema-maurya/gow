@@ -1,0 +1,101 @@
+/* DeleteConfirmationPopup.css */
+
+.delete-confirmation {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+  display: none; /* Hidden by default */
+}
+
+.delete-confirmation.open {
+  display: block; /* Show when isOpen is true */
+}
+
+.confirmation-message {
+  margin-bottom: 20px;
+}
+
+.confirmation-buttons button {
+  margin-right: 10px;
+}
+
+.confirmation-buttons button:last-child {
+  margin-right: 0;
+}
+
+.feedback-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .feedback-list th, .feedback-list td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    border-right: 2px solid #ddd;
+  }
+  .feedback-list th {
+    background-color: #134274;
+    color: #fff;
+  }
+  
+  .feedback-list tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .feedback-list tbody tr:hover {
+    background-color: #f2f2f2;
+  }
+  
+  .feedback-list th:last-child, .feedback-list td:last-child {
+    border-right: none;
+  }
+  .feedback-list td:nth-child(2) {
+    color: grey; /* Apply grey color to the date column */
+  }
+  .feedback-list td:nth-child(1) {
+    font-weight: bold;
+
+    color: rgb(11, 10, 10); /* Apply grey color to the date column */
+  }
+
+      /* word-wrap: break-word; */
+    /* word-break: break-all; */
+    /* word-break: auto-phrase; */
+    /* overflow-wrap: break-word; */
+    .horizontal-scroll {
+        overflow-y: auto;
+        overflow-x: auto;
+        white-space: nowrap;
+        max-height: 100px;
+        max-width: 250px; 
+    }
+      .feedbackmail{
+        width: 30%;
+      }
+
+    @media only screen and (max-width: 600px) {
+.date-header {
+          display: none;
+        }
+      .mobile {
+        font-size: 10px;
+        width: 50%;
+      }
+      .mobiles {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 10em; /* Adjust max-width as needed */
+      }
+      
+
+    }

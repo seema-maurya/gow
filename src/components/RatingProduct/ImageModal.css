@@ -1,0 +1,87 @@
+.image-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.85); /* Dark overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1200; /* Ensure it's on top of other content */
+    transition: opacity 0.3s ease; /* Smooth transition */
+  }
+  
+  .image-modal-content {
+    position: relative;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 90%;
+    max-height: 90%;
+    overflow: hidden; /* Prevent overflow */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    animation: fadeIn 0.3s; /* Animation when modal opens */
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .image-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ff0000; /* Close icon color */
+    transition: color 0.3s; /* Smooth color transition */
+  }
+  
+  .image-modal-close:hover {
+    color: #c70000; /* Darker red on hover */
+  }
+  
+  .image-modal-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the image */
+    width: 100%;
+    object-fit: cover; /* Ensures the image covers the entire area */
+    
+  }
+  
+  .image-modal-arrow {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 30px;
+    color: #007bff; /* Arrow color */
+    padding: 10px;
+    margin: 0 10px; /* Add spacing around arrows */
+    transition: transform 0.3s; /* Smooth transform */
+  }
+  
+  .image-modal-arrow:hover {
+    transform: scale(1.2); /* Slightly enlarge on hover */
+  }
+  
+  .image-modal-image {
+    max-width: 400px;
+    min-width: 400px;
+    max-height: 80vh; /* Responsive image height */
+    object-fit: cover; /* Ensures the image covers the entire area */
+    border-radius: 5px; /* Optional: add rounded corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Subtle shadow around images */
+    }
+  

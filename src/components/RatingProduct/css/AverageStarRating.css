@@ -1,0 +1,244 @@
+.like-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.like-button:hover {
+  color: blue;
+}
+
+.review-toggle:hover {
+    text-decoration: underline;
+    color: rgb(223, 149, 11); /* Change to your desired hover color */
+  }
+  
+  .rating-breakdown {
+    margin: 20px 0;  
+  }
+  .rating-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  .rating-bar span {
+    margin-right: 10px;
+    font-size: 14px;
+  }
+  .bar-container {
+    width: 200px; /* Fixed width for consistency */
+    background-color: #e0e0e0; /* Light grey background for unfilled portion */
+    height: 10px; /* Height of the bar */
+    margin-right: 10px; /* Space between the bar and the percentage */
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+    border: 1px solid #ccc; /* Add border around the box */
+  }
+  
+  .filled-bar {
+    height: 100%;
+    background-color: #f0c14b; /* Amazon-style yellow color */
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .review-popups {
+    max-height: 60vh; /* Adjust based on your preference */
+    overflow-y: auto; /* Enables vertical scrolling */
+    width: 60vw; /* Adjust width as needed */
+    text-align: left;
+  }
+  
+  .review-popups h3 {
+    margin-top: 0;
+    font-size: 24px;
+  }
+  
+  .review-popups div {
+    margin-bottom: 10px;
+  }
+  
+  .review-popups hr {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 10px 0;
+  }
+  .review-popup  , .popupReviews{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1100;
+  }
+  .rating-distribution {
+    margin-top: 20px;
+  }
+  .comments-section {
+    margin-top: 20px;
+  }
+  .comment {
+    margin-bottom: 10px;
+  }
+
+  .star-rating .star {
+    font-size: 24px;
+    cursor: default;
+  }
+  
+  .star-on {
+    color: gold;
+    text-shadow: 0 0 2px orange;
+  }
+  
+  .star-partial  {
+    position: relative;
+    display: inline-block;
+    font-size: 24px;
+    color: gold;
+    text-shadow: 0 0 2px orange;
+  
+  }
+  .star-partials  {
+    position: relative;
+    display: inline-block;
+    font-size: 24px;
+    color: gold;
+    text-shadow: 0 0 2px orange;
+  
+  }
+  
+  .star-partial::before {
+    content: "\2605"; /* Unicode star character */
+    position: absolute; 
+    width: 100%;
+    color: white;
+    text-shadow: 0 0 2px rgb(247, 129, 2);
+    overflow: hidden;
+    clip-path: inset(0 0 0 50%); /* Clip left half */
+  }
+  
+  .star-partials::before {
+    content: "\2605"; /* Unicode star character */
+    position: absolute; 
+    width: 100%;
+    color: white;
+    text-shadow: 0 0 2px rgb(247, 129, 2);
+    overflow: hidden;
+    clip-path: inset(0 0 0 35%); /* Clip left half */
+  }
+  
+  .star-off {
+    color: white;
+    text-shadow: 0 0 3px orange;
+  }
+  
+  
+  .star-rating .on {
+    color: gold;
+    text-shadow: 0 0 2px orange; /*Submtting Star Rating Creates a subtle border effect */
+  }
+  
+  
+  .star-rating .off {
+    color: white;
+    text-shadow: 0 0 3px orange; /*before Submtting Star Rating Creates a subtle border effect */
+  }
+
+  .review-image {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: 10px; /* Space between images */
+    margin-top: 15px;
+    overflow-y: auto;
+    max-height: 20vh;
+  }
+  
+  .image-review-item {
+    position: relative;
+    width: 80px; /* Thumbnail width */
+    height: 80px; /* Thumbnail height */
+    border: 1px solid #ccc; /* Light border around image */
+    border-radius: 4px; /* Slight rounding of image corners */
+    overflow: hidden; /* Ensures image doesn't overflow the container */
+    cursor: pointer; /* Makes the thumbnail look clickable */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  }
+  
+  .image-review-item img,video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures images maintain aspect ratio and fill the box */
+    transition: transform 0.3s ease; /* Smooth zoom-in effect */
+  }
+  
+  .image-review-item:hover img {
+    transform: scale(1.1); /* Zoom in slightly on hover */
+  }
+  
+  .review-delete-icon {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    color: #f44336; /* Red delete icon */
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.8); /* Light background behind icon */
+    border-radius: 50%; /* Circle around the icon */
+    padding: 2px;
+  }
+  
+  .review-delete-icon:hover {
+    color: #d32f2f; /* Darker red on hover */
+    transform: scale(1.1); /* Slightly increase size on hover */
+  }
+  
+  .review-image-large-view {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    z-index: 1200;
+    border: 1px solid #ccc;
+    padding: 20px;
+    max-width: 80vw;
+    max-height: 80vh;
+    overflow: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .review-image-large-view img {
+    width: 100%;
+    height: auto;
+  }
+.large-image-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  z-index: 1200;
+}
+
+.large-image-modal-img  {
+  max-width: 90%;
+  max-height: 80vh;
+  object-fit: cover;
+  min-width: 80%;
+  min-height: 50vh;
+}
+
+.close-modal {
+  font-size: 24px;
+}
+  

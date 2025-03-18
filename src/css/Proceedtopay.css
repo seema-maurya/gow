@@ -1,0 +1,314 @@
+
+.downloadPDFButton {
+  cursor: pointer;
+
+  transition: color 0.3s ease; /* Add a transition for a smoother effect */
+}
+
+.downloadPDFButton:hover {
+  color: #007bff; /* Change the color on hover */
+}
+.proceed{
+  padding: 10px 20px;
+  background-color: rgb(231, 153, 10);
+  color: white;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+}
+.proceed:hover{
+  background-color: rgb(214, 141, 5);
+
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(154, 150, 150, 0.646); /* Dark semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it appears above other content */
+}
+
+.processing-modal {
+  background: transparent;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.processing-modal p {
+  font-size: 18px;
+  color: #333;
+  margin: 10px 0;
+}
+
+.processing-modal .dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin: 0 2px;
+  background-color: #333;
+  border-radius: 50%;
+  animation: dot-blink 1.4s infinite both, color-change 3s infinite;
+}
+
+.processing-modal .dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.processing-modal .dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes dot-blink {
+  0%, 20%, 80%, 100% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+
+.spinner {
+  margin: 20px 0;
+  border: 6px solid #f3f3f34a;
+  border-radius: 50%;
+  border-top: 6px solid #333;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite, color-change 3s infinite;
+}
+
+.processing {
+  animation: dots-blink 2s linear infinite, colorss-change 4s infinite;
+}
+
+@keyframes dots-blink {
+  0%, 20%, 50%, 80%, 100% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0.5;
+  }
+  60% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes colorss-change {
+  0% {
+    color: red;
+  }
+  25% {
+    color: blue;
+  }
+  50% {
+    color: green;
+  }
+  75% {
+    color: yellow;
+  }
+  100% {
+    color: red;
+  }
+}
+
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes color-change {
+  0% { border-top-color: #333; }
+  25% { border-top-color: #ff0000; }
+  50% { border-top-color: #00ff00; }
+  75% { border-top-color: #0000ff; }
+  100% { border-top-color: #333; }
+}
+
+
+.payment-form {
+    margin-top: 20px; /* Add some spacing between the button and the form */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: transparent;
+    width: auto;
+    padding-bottom: 20px;
+  }
+  .payment-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .payment-row {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+  }
+  
+  .payment-heading,
+  .payment-value {
+    /* flex: 1; */
+    margin: 0 5px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    /* width: 25%; */
+  }
+  .payment-heading:nth-child(3),
+.payment-value:nth-child(3) {
+  flex-grow: 2; /* Give more space to Product Name */
+  flex-basis: 50%; /* Adjust initial width for large names */
+}
+.payment-heading:nth-child(1),
+.payment-value:nth-child(1),
+.payment-heading:nth-child(2),
+.payment-value:nth-child(2),
+.payment-heading:nth-child(4),
+.payment-value:nth-child(4),
+.payment-heading:nth-child(5),
+.payment-value:nth-child(5),
+.payment-heading:nth-child(6),
+.payment-value:nth-child(6) {
+  flex-grow: 0.5; 
+  flex-basis: 10%; 
+}
+
+  .payment-heading {
+    font-weight: bold;
+    width: 25%;
+  }
+  .payment-heading:not(:last-child),
+  .payment-value:not(:last-child) {
+  border-right: 3px solid #100202; /* Add border to separate columns */
+
+  }
+  .filter {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    /* justify-content: space-between; */
+  }
+  
+  .filter h2 {
+    margin: 0;
+    flex:  1 auto; /* Allow the heading to grow but not shrink */
+    width: auto; /* Adjust width to fit the content */  
+    font-size: 30px; 
+  }
+  
+  .filter input {
+    margin-left: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    /* border-radius: 5px; */
+    max-width: 500px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    flex-shrink: 0; 
+  }
+  
+  .filter input:focus {
+    border-color: #0073ff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(242, 0, 255, 0.5);
+    background-color: white;
+  }
+  .card-form {
+    margin-top: 20px; /* Add some spacing between the button and the form */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: rgb(243, 241, 241);
+    width: 100%;
+  }
+  .payment-details{
+    background-color: #d3c8c8;
+  }
+  .product-details {
+    background-color: #c5c4c4;
+    border-radius: 10px;
+
+  }
+  .payment-form strong {
+    margin-top: 0;
+    margin-right: 20px;
+    width: auto;
+  }
+  
+  .payment-form input[type="text"],
+  .payment-form select {
+    width: auto;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .payment-form button {
+    background-color: #007bff; /* Primary blue color */
+    background-image: linear-gradient(135deg, #007bff, #0056b3); /* Gradient for a modern look */
+    color: white;
+    padding: 15px 25px; /* Increased padding for better spacing */
+    border: none;
+    border-radius: 30px; /* More rounded edges */
+    cursor: pointer;
+    width: auto;
+    margin-bottom: 10px;
+    font-size: 16px; /* Larger font for readability */
+    font-weight: 600; /* Bold text for emphasis */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+  }
+  
+  .payment-form button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+    background-image: linear-gradient(135deg, #0056b3, #003f7f); /* Darker gradient on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+    transform: translateY(-2px); /* Slight upward movement on hover */
+  }
+  
+  .payment-form button:active {
+    transform: translateY(0); /* Button returns to normal on click */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); /* Slightly reduced shadow on click */
+  }
+  
+
+  @media print {
+    body {
+      margin: 0;
+      padding: 0;
+    }
+  
+    .invoice-container {
+      overflow: hidden;
+      height: 100vh; /* Set the height of the container to fit one page */
+    }
+  
+    .invoice-details {
+      page-break-inside: avoid; /* Avoid page breaks within invoice details */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .payment-form {
+      width: auto; /* Adjust width for smaller screens */
+      font-size: 10px;
+    }
+    .payment-form input[type="text"], .payment-form select {
+      width: 137px;
+    }  
+  }
+  

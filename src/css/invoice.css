@@ -1,0 +1,173 @@
+  .page-break {
+    page-break-before: always;
+  }
+
+
+  @media print {
+    .invoice-container {
+      page-break-inside: avoid;
+    }
+  }
+
+.invoice-container {
+    font-family: Arial, sans-serif;
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    margin-top: 20px;
+    position: relative; /* Make the container a positioning context */
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Ctext x="0" y="20" font-family="Arial, sans-serif" font-size="10" fill="%23f2f2f2"%3EGOW%3C/text%3E%3C/svg%3E');
+}
+.invoice-logo {
+    position: absolute;
+    top: 20px;
+    left: 5px;
+    width: 100px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+  .invoice-header {
+    text-align: center;
+  }
+  
+  .invoice-details {
+    margin-top: 20px;
+  }
+  
+  .invoice-section {
+    margin-bottom: 30px;
+  }
+  
+  .invoice-section h2 {
+    margin-bottom: 10px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table th, table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  table th {
+    background-color: #f2f2f2;
+  }
+  
+  table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .total-section {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .total-item {
+    margin-bottom: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+  }
+  
+  .label {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .cart-shop-total {
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .label-total {
+    color: #0066cc;
+  }
+  
+  .label-tax {
+    color: #ff9933;
+  }
+  
+  .total-item:last-child {
+    margin-bottom: 0;
+  }
+  @media print {
+    body {
+      margin: 0;
+      padding: 0;
+    }
+  
+    .invoice-container {
+      overflow: hidden;
+      height: 150vh; /* Set the height of the container to fit one page */
+    }
+  
+    .invoice-details {
+      page-break-inside: avoid; /* Avoid page breaks within invoice details */
+    }
+  }  
+
+  @media (max-width: 768px) {
+    .invoice-container {
+      width: 100%; /* Full width for mobile */
+      margin: 0 auto;
+      padding: 10px; /* Reduce padding for smaller screens */
+      border-radius: 5px; /* Slightly smaller border radius */
+      font-size: 14px; /* Adjust font size for better readability */
+    }
+  
+    .invoice-logo {
+      width: 80px; /* Adjust logo size for mobile */
+      top: 10px; /* Adjust top position */
+      left: 10px; /* Adjust left position */
+    }
+  
+    .invoice-header {
+      font-size: 13px; /* Adjust header font size */
+      margin-bottom: 10px; /* Add some spacing */
+    }
+  
+    .invoice-details {
+      font-size: 12px; /* Adjust font size */
+    }
+  
+    .invoice-section h2 {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  
+    table {
+      font-size: 12px; /* Adjust table font size */
+    }
+  
+    table th, table td {
+      padding: 5px; /* Reduce padding for table cells */
+    }
+  
+    .total-section {
+      padding: 1px; /* Reduce padding for total section */
+      font-size: 12px; /* Adjust font size */
+    }
+  
+    .total-item {
+      flex-direction: row; /* Stack items vertically */
+      align-items: flex-start; /* Align items to the start */
+    }
+  
+    .label, .cart-shop-total {
+      font-size: 14px; /* Adjust label font size */
+      margin-bottom: 5px; /* Add spacing between stacked items */
+    }
+  
+    .label-total, .label-tax {
+      font-size: 14px; /* Adjust total and tax label font size */
+    }
+  }
+  

@@ -1,0 +1,29 @@
+.privacy-notice-container {
+    max-width: 800px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+  
+  .privacy-notice h1,
+  .privacy-notice h2,
+  .privacy-notice h3 {
+    margin-top: 20px;
+    font-size: 20px;
+  }
+  
+  .privacy-notice .paragraph {
+    line-height: 1.6;
+    overflow-wrap: break-word;
+  }
+    
+  .privacy-notice a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .privacy-notice a:hover {
+color: aquamarine;
+  }
+  

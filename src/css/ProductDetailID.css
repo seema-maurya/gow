@@ -1,0 +1,346 @@
+.a-price-symbol,
+.a-price-fraction {
+  position: relative;
+  top: -0.5em;
+}
+.thumbnail-container-set {
+  position: sticky;
+  top: 20px; /* Adjust based on your layout */
+  overflow: hidden; /* Hide overflow if necessary */
+  display: flex;
+  flex-direction: column; /* Arrange thumbnails in a column */
+  align-items: flex-start; /* Align items to the left */
+  margin-right: 8px; /* Space between thumbnails and main image */
+}
+
+.limited-time-offer {
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 5px;
+  max-width: max-content;
+
+}
+/* Right side buttons container */
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  /* align-items: flex-start; */
+  align-items: center; /* Align buttons to stretch full width */
+  justify-content: center;
+  background-color: #f3f3f3;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  position: sticky;
+  top: 50px; /* Adjust based on your layout */
+  height: auto; /* Set a height for your image container */
+  overflow: hidden; /* Hide overflow if necessary */
+
+}
+
+.go-to-cart-button,
+.proceed-to-pay-button {
+  background-color: #fafafa;
+  border: 1px solid #0c0c0c;
+  color: #111;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 50px;
+  margin-bottom: 10px;
+  width: 100%; /* Make button stretch to full width */
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.go-to-cart-button:hover,
+.proceed-to-pay-button:hover {
+  background-color: #cecdcb;
+}
+
+.go-to-cart-buttonWAIT {
+  background-color: #fafafa; /* Amazon yellow */
+  border: 1px solid #0c0c0c;
+  color: #111;
+  /* padding: 8px 16px; */
+  /* font-size: 16px; */
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 50px;
+  /* margin-left: 10px; */
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  width: auto;
+}
+
+.go-to-cart-button:hover {
+  background-color: #cecdcb;
+}
+
+/* .go-to-cart-button:active {
+  border-color: #d70d0d;
+  background-color: #de0f0f;
+} */
+
+/* .product-detail {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 20px;
+    justify-content: space-between;
+
+  } */
+  .product-detail {
+    display: grid;
+    grid-template-columns:0.3fr 1fr 2fr 0.9fr; /* Three columns: Image, Details, Buttons */
+    gap: 10px;
+    align-items: flex-start;
+    padding: 5px;
+  }
+  
+  .main-image-container {
+    position: sticky;
+    top: 20px; /* Adjust based on your layout */
+    overflow: hidden; /* Hide overflow if necessary */
+  }
+  .image-gallery-main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: sticky;
+    top: 20px; /* Adjust based on your layout */
+    width: 400px; /* Set a width for your image container */
+    height: 400px; /* Set a height for your image container */
+    overflow: hidden; /* Hide overflow if necessary */
+  
+  }
+
+  
+  .image-gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* flex-direction: row; */
+  }
+  .main-image {
+    position: relative;
+    overflow: hidden; /* Ensure the zoom effect stays within bounds */
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    background: #dfdede;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ensure the zoomed image stays within bounds */
+    cursor: crosshair; /* Crosshair cursor to show zoomable area */
+  
+  }
+  .share-button {
+    position: absolute;
+    top: 10px; 
+    right: 10px;
+    background: rgba(253, 251, 251, 0.7); /* Semi-transparent background */
+    border: none;
+    border-radius: 50%; /* Circular button */
+    padding: 8px;
+    cursor: pointer;
+    color: #000;
+    z-index: 10;
+  }
+  .main-image:hover img:not(.share-button) {
+    transform: scale(1.5); /* Zoom scale */
+  }
+  
+  /* .share-button:hover {
+    background: rgb(228, 225, 225);
+  } */
+  
+  
+  .main-image img {
+    max-width: 500px; /* Adjust as needed */
+    max-height: 500px; /* Adjust as needed */
+    object-fit: contain; /* Preserve aspect ratio */
+    /* border: 1px solid #ddd; */
+    padding: 10px;
+    background: #dfdede;
+    transition: transform 0.3s ease; 
+
+  }
+  .main-image:hover .zoom-image {
+    transform: scale(1.5); /* Zoom scale */
+  }
+  .main-image:hover .zoomed-area {
+    transform: scale(5); /* Zoom scale */
+  }
+  
+  .zoomed-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150%;
+    height: 150%;
+    object-fit: cover; /* Ensure image retains its aspect ratio */
+    transform-origin: top left;
+    transition: transform 0.1s ease;
+    pointer-events: none; /* Prevent interaction with the zoomed image */
+  }
+  
+  .zoom-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    pointer-events: none; /* Prevent interaction with the zoomed image */
+  }
+    
+  .thumbnail-container {
+    display: flex;
+    flex-direction: row;
+    /* flex-direction: column; */
+    margin-left: 10px;
+    margin-top: 5px;
+  }
+  
+  .thumbnail {
+    width: 50px;
+    height: 50px;
+    object-fit: cover; /* Preserve aspect ratio */
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: border 0.3s ease, transform 0.3s ease; /* Include transform for scaling */
+    margin-left: 10px;
+    border: 2px solid transparent; /* Default border */
+    margin-top: 10px;
+    }
+  
+  .thumbnail.selected {
+  border: 2px solid rgb(6, 6, 119); /* Highlighted border when selected */
+  outline: 3px solid #007185;
+  outline-offset:2px;
+  box-shadow: none;
+  border-radius: 10px;
+}
+
+  .product-info {
+    max-width:500px ;
+    text-align: left; /* Align text to the left */
+    margin-left: 20px;
+    /* overflow-y: auto;  */
+  }
+  .product-info h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .product-info p {
+    margin: 5px 0;
+  }
+  
+    .thumbnail {
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  .thumbnail:hover,
+  .thumbnail:active {
+    opacity: 1;
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    border: 2px solid #f1ddbd; /* Add border on hover/click */
+  }
+  
+/* Mobile version CSS */
+@media only screen and (max-width: 600px) {
+
+  .thumbnail-container-set {
+    position: static;
+    margin-right: 0;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .limited-time-offer {
+    font-size: 12px;
+    padding: 3px 6px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10px;
+    height: auto;
+  }
+
+  .go-to-cart-button,
+  .proceed-to-pay-button {
+    font-size: 14px;
+    padding: 8px 10px;
+    width: auto;
+  }
+
+  .product-detail {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .main-image-container {
+    width: 100%;
+    height: auto;
+  }
+
+  .image-gallery-main {
+    width: 100%;
+    height: auto;
+  }
+
+  .main-image img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .product-info {
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .product-info h1 {
+    font-size: 12px;
+  }
+
+  .thumbnail-container {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .thumbnail {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+  }
+
+  .action-buttons {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .share-button {
+    top: 5px;
+    right: 5px;
+    padding: 5px;
+  }
+
+  .limited-time-offer {
+    font-size: 10px;
+    padding: 2px 5px;
+  }
+}

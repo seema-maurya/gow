@@ -1,0 +1,169 @@
+/* MyAccount.css */
+
+body {
+  background-color: #f0f4f8;
+  font-family: 'Roboto', sans-serif;
+}
+
+.my-account-container {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 550px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: box-shadow 0.3s ease;
+}
+
+.my-account-container:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.my-account-container h2 {
+  text-align: center;
+  color: #8c8e90;
+  font-size: 32px;
+  margin-bottom: 25px;
+  font-weight: bold;
+  position: relative;
+  border-radius: 20px;
+}
+
+
+.profile-details {
+  display: grid;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.profile-item {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #d1d7e0;
+  border-radius: 10px;
+  padding: 1px 1px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  position: relative;
+}
+
+.profile-item:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.profile-item input,
+.profile-item select {
+  flex: 1;
+  padding: 5px;
+  font-size: 16px;
+  border: none;
+  background-color: transparent;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.profile-item input:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+.profile-item input::placeholder {
+  color: #a0a0a0;
+}
+
+.profile-item svg {
+  margin-right: 15px;
+  color: #007bff;
+  font-size: 18px;
+  align-items: center;
+}
+
+.update-profile-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(135deg, #007bff, #00aaff);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+  margin-top: 5px;
+}
+
+.update-profile-btn:hover {
+  background: linear-gradient(135deg, #0056b3, #007bff);
+  box-shadow: 0 8px 18px rgba(0, 123, 255, 0.5);
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #007bff;
+  font-size: 18px;
+}
+
+.password-toggle:hover {
+  color: #0056b3;
+}
+
+.labelMyAccount {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 16px;
+  color: #555;
+}
+
+.switch {
+  margin-left: 10px;
+}
+
+.change-password {
+  background-color: #033e7d;
+  color: white;
+  padding: 10px;
+  border-radius: 80px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.profile-item input[type="password"] {
+  border-color: #ddd;
+}
+
+.profile-item input:focus {
+  outline: none;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.4);
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .my-account-container {
+    padding: 20px;
+    margin: 20px;
+  }
+
+  .profile-item input,
+  .profile-item select {
+    font-size: 14px;
+  }
+
+  .update-profile-btn {
+    font-size: 16px;
+    padding: 12px;
+  }
+}

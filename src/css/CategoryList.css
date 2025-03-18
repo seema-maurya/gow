@@ -1,0 +1,74 @@
+/* CategoryList.css */
+
+.category-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.category {
+    width: 80%;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.category-header h1 {
+    margin: 0;
+    font-size: 20px;
+    color: #333;
+}
+
+.category-header p {
+    margin: 0;
+    font-size: 16px;
+    color: #666;
+}
+
+.subcategory {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+.subcategory h2 {
+    margin: 0;
+    font-size: 18px;
+    color: white;
+}
+
+.subcategory p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.action-icons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.edit-icon,
+.delete-icon {
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 18px;
+    color: #999;
+}
+
+.delete-icon:hover {
+    color: #f00;
+}
