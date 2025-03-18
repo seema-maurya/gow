@@ -372,14 +372,14 @@ const StarRating = ({
     // Go to the previous image, wrapping around if necessary
     const newIndex = (currentIndex - 1 + userImages.length) % userImages.length;
     setCurrentIndex(newIndex); // Update to the new index
-    setLargeImage(userImages[newIndex].filePath); // Update the large image
+    setLargeImage(userImages[newIndex].dataURL); // Update the large image
   };
 
   const handleNext = () => {
     // Go to the next image, wrapping around if necessary
     const newIndex = (currentIndex + 1) % userImages.length;
     setCurrentIndex(newIndex); // Update to the new index
-    setLargeImage(userImages[newIndex].filePath); // Update the large image
+    setLargeImage(userImages[newIndex].dataURL); // Update the large image
   };
 
   const isSubmitButtonDisabled = () => {
@@ -485,12 +485,12 @@ const StarRating = ({
                       <div
                         className="image-review-item"
                         key={index}
-                        onClick={() => openImageLargeView(image.filePath, index)}
+                        onClick={() => openImageLargeView(image.dataURL, index)}
                       >
                         {image && image?.type?.startsWith("image") ? (
                           <img
                             key={index}
-                            src={image.filePath || null}
+                            src={image.dataURL || null}
                             alt={`user-review-${index + 1}`}
                             style={
                               {
@@ -507,7 +507,7 @@ const StarRating = ({
                             // controls
                             >
                               <source
-                                src={image.filePath || null}
+                                src={image.dataURL || null}
                                 type={image.type}
                               />
                             </video>
