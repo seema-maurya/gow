@@ -754,7 +754,7 @@ const AddProduct = () => {
               </label>
 
               <label>
-                Clothing Company :&nbsp;
+                Company Name :&nbsp;
                 <select
                   id="brandSelectId"
                   value={selectedBrand}

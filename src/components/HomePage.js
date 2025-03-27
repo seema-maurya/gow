@@ -700,6 +700,16 @@ const HomePage = () => {
                 <a href="#product-6" data-bs-toggle="tab">
                   <h4>Mother's Day</h4>
                 </a>
+                <a href="#product-7" data-bs-toggle="tab">
+                  <h4>Kids</h4>
+                </a>
+                <a href="#product-8" data-bs-toggle="tab">
+                  <h4>Christmas Day</h4>
+                </a>
+              
+                <a href="#product-9"  style={{marginTop:"20px"}} data-bs-toggle="tab">
+                  <h4>Handpicked Design</h4>
+                </a>
               </div>
               <div className="tab-content jump">
                 <div className="tab-pane" id="product-1">
@@ -726,6 +736,15 @@ const HomePage = () => {
                 <div className="tab-pane" id="product-6">
                   {renderProductList("Mothers Day", products)}
                 </div>
+                <div className="tab-pane" id="product-7">
+                  {renderProductList("Kids", products)}
+                </div>
+                <div className="tab-pane" id="product-8">
+                  {renderProductList("Christmas Day", products)}
+                </div>
+                <div className="tab-pane" id="product-9">
+                  {renderProductList("Handpicked Design", products)}
+                </div>
               </div>
             </div>
           </div>
@@ -733,7 +752,7 @@ const HomePage = () => {
           <div className="blog-area pb-55">
             <div className="container">
               <div className="section-title text-center mb-55">
-                <h2>OUR BLOG</h2>
+                <h2>Recently View</h2>
               </div>
               {renderProductList("", products)}
             </div>

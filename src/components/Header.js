@@ -279,6 +279,44 @@ const Header = () => {
                       <></>
                     )}
                     <li>
+                      <a href="/#" className="a-tag">
+                        <FaUserShield /> Occasion{" "}
+                        <i className="fa fa-angle-down"></i>
+                      </a>
+                      <ul className="submenu">
+                        <li>
+                          <a href="/search-results?query=Handpic Design">
+                            HandPic design
+                          </a>
+                        </li>
+                        <li>
+                          <a href="/search-results?query=BirthDay">Birthday</a>
+                        </li>
+                        <li>
+                          <a href="/search-results?query=FriendShip Day">
+                            FriendShip  Day
+                          </a>
+                        </li>
+                        <li>
+                          <a href="/search-results?query=Festival">Festival</a>
+                        </li>
+                        <li>
+                          <a href="/search-results?query=Wedding">Wedding</a>
+                        </li>
+                        <li>
+                          <a href="/search-results?query=Mothers Day ">
+                            Mother's Day
+                          </a>
+                        </li>
+                        <li>
+                          <a href="/search-results?query=Mothers Day ">
+                            Mother's Day
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+
+                    <li>
                       <a href="/about">
                         <FaInfoCircle /> About Us
                       </a>
@@ -621,7 +659,7 @@ const Header = () => {
                     <a href="/#">Shop</a>
                     <ul>
                       <li>
-                        <a href="/#">Clothing Company</a>
+                        <a href="/#">Company Name</a>
                         <ul>
                           <li>
                             <a href="https://www.nike.com/in ">Nike</a>

@@ -39,13 +39,15 @@ const About = () => {
       <div className="about-header">
         <h2>Welcome to GOW</h2>
         <p className="about-description">
-          Founded in 1995, GOW is one of India’s leading clothing brands and
-          the flagship company of the RPG GROUP.
+          {/* Founded in 1995, GOW is one of India’s leading clothing brands and
+          the flagship company of the RPG GROUP. */}
+          Welcome to [Your Website Name], the ultimate destination for finding thoughtful, personalized, and ready-to-ship gifts for every special occasion. Whether it’s a birthday, anniversary, festival, wedding, corporate event, or just a simple "thinking of you" gesture, we help you express your emotions with gifts that create lasting memories.
         </p>
-        <a href="/#" className="about-link">
+        <a href="/" className="about-link">
           Explore Our Collection
         </a>
-        <p className="tagline">Discover Style, Discover Happiness</p>
+        {/* <p className="tagline">Discover Style, Discover Happiness</p> */}
+        <p className="tagline">Celebrate Every Moment with the Perfect Gift!</p>
       </div>
       <div className="about-content">
         <div className="about-img">
@@ -61,6 +63,18 @@ const About = () => {
           </a>
         </div>
         <div className="about-text">
+          <p>The Heart Behind the Gifts
+At [Your Website Name], we believe that every gift tells a story. The joy of gifting isn’t just in the item itself but in the love, thought, and emotions behind it. Our journey started with a simple idea—to make gifting effortless, meaningful, and memorable. From handmade creations to elegantly crafted gift boxes, we bring you a seamless gifting experience right at your fingertips.
+Create a truly one-of-a-kind gift hamper, thoughtfully tailored to the preferences of your loved one. Simply share a few details about them, and we will craft a bespoke selection of handpicked treasures—blending artisanal charm with budget friendly brands. Whether it's a heartfelt keepsake or a luxurious surprise, we take care of every detail, ensuring your gift is as meaningful and unique as the person receiving it
+What Makes Us Special?
+🌟 Curated Collection for Every Occasion
+We take the guesswork out of gifting by offering a wide range of gifts tailored to suit different occasions, personalities, and preferences. Whether you're looking for handmade keepsakes, luxury hampers, trendy gifts, or last-minute options, we have you covered.
+💖 Personalized Touch, Unforgettable Memories
+Add a personal touch to your gifts with custom engravings, handwritten notes, monograms, and tailor-made packaging. Every personalized gift we create is designed to make your loved ones feel extra special.
+🎁 Handmade with Love & Care
+For those who appreciate handcrafted beauty, our custom-made and artisanal gifts are designed with creativity, skill, and attention to detail. 
+Our Vision & Mission
+🔹 Our Vision – To revolutionize the gifting experience by providing a seamless, personalized, and joy-filled shopping experience for every customer.</p>
           <p>
             Driven by the purpose of helping the world move safely and smartly,
             GOW provides world-class products and services across 110+ states
@@ -69,11 +83,12 @@ const About = () => {
             Say hello to happiness! ₹11,315 Cr. of annual revenue.
           </p>
           <div className="contact-info">
-            <strong>Contact number:</strong> 7506471096 <br />
+            <strong>Contact number:</strong> +91 86572 ***** <br />
             <strong>Address:</strong> Behram Baugh, Jogeshwari West, Mumbai
           </div>
           <p className="clothing-category">
             We have a wide range of clothing for:
+            📦 Shop now and make someone’s day brighter with the perfect gift!
           </p>
         </div>
       </div>
