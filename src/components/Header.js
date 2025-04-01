@@ -4,15 +4,15 @@ import {
   FaPlus,
   FaUser,
   FaUserShield,
-  FaInfoCircle,
+  FaGift,
+  FaHandHoldingHeart,
 } from "react-icons/fa";
-// import axios from "axios";
 import "../css/home.css";
-import logo from "../icons/gw.jpg";
+// import logo from "../icons/gow.jpg";
 import { Link } from "react-router-dom";
 import {
   calculateTotal,
-  fetchAllCart,
+  // fetchAllCart,
   handleVariantAddToCart,
   handleRemoveFromCart2Variant,
   handleRemoveFromCartVariant,
@@ -20,17 +20,22 @@ import {
 
 import Search from "./Search";
 import { toast } from "react-toastify";
+import { useCart } from "./CartContext.js";
 
 const Header = () => {
-  const [cart, setCart] = useState([]);
+  const { cart, setCart, selectedSizeVariants, setSelectedSizeVariants } =
+    useCart();
+
+  // const [cart, setCart] = useState([]);
   const [isAdmin, setIsAdmin] = useState(false);
-  const [selectedSizes, setSelectedSizeVariants] = useState("");
+  // const [selectedSizes, setSelectedSizeVariants] = useState("");
   // const [userId, setUserId] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
+  console.log(process.env.REACT_APP_API_URL);
   useEffect(() => {
-    fetchAllCart(setCart, setSelectedSizeVariants);
+    // fetchAllCart(setCart, setSelectedSizeVariants);
     const storedUserId = localStorage.getItem("userId");
     if (storedUserId) {
       fetchUserProfile(storedUserId);
@@ -39,8 +44,9 @@ const Header = () => {
       setCart(storedCart);
       setSelectedProduct(null);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log("Cart", cart, selectedSizes);
+  console.log("selectedSizeVariants", selectedSizeVariants);
   const fetchUserProfile = async (userId) => {
     try {
       const response = await fetch(
@@ -185,28 +191,49 @@ const Header = () => {
   };
 
   return (
-    <div className="" style={{ userSelect: "none" }}>
-      <header className="header-area header-padding-1 sticky-bar header-res-padding clearfix">
+    <div
+      className=""
+      style={{ userSelect: "none", backgroundColor: "rgb(24 107 154)" }}
+    >
+      <header
+        style={{ backgroundColor: "rgb(24 107 154)" }}
+        className="header-area header-padding-1 sticky-bar header-res-padding clearfix"
+      >
         <div className="container-fluid">
           <div className="row">
             <div className="col-xl-2 col-lg-2 col-md-6 col-4">
-              <div className="logo" title="" style={{ userSelect: "none" }}>
+              {/* <div className="logo" title="" style={{ userSelect: "none" }}>
                 <a href="/">
                   <img
-                    className="GOW-logo-header"
+                    className="maurya-logo-header"
                     src={logo}
                     alt="My-first-design-2"
-                    style={{ width: "120px", height: "auto" }}
+                    style={{ width: "120px", height: "88px" }}
                   />
+                </a>
+              </div> */}
+              <div
+                className="logo-container"
+                style={{ userSelect: "none", textDecoration: "none" }}
+              >
+                <a href="/" className="gow-logo">
+                  <span className="gow-main">GOW</span>
+                  <span className="gow-full">Galaxy of Wishes</span>
                 </a>
               </div>
             </div>
             <div className="col-xl-8 col-lg-8 d-none d-lg-block">
-              <div className="main-menu" style={{ backgroundColor: "#e6f6ff" }}>
+              <div
+                className="main-menu"
+                style={{ backgroundColor: "rgb(24 107 154)", color: "white" }}
+              >
                 <nav>
                   <ul>
                     <li>
-                      <a href="/#">
+                      <Search />
+                    </li>
+                    <li>
+                      <a href="/#" className="a-tag">
                         <FaUser /> Profile
                         <i className="fa fa-angle-down"></i>
                       </a>
@@ -224,7 +251,7 @@ const Header = () => {
                           </p>
                         </li>
                         <li>
-                          {/* <a href="/about">about us</a> */}
+                          <a href="/about">about us</a>
                         </li>
                         <li>{/* <a href="/#">cart page</a> */}</li>
                         <li>
@@ -245,12 +272,9 @@ const Header = () => {
                         )}
                       </ul>
                     </li>
-                    <li>
-                      <Search />
-                    </li>
                     {isAdmin ? (
                       <li>
-                        <a href="/#">
+                        <a href="/#" className="a-tag">
                           <FaUserShield /> Vendor{" "}
                           <i className="fa fa-angle-down"></i>
                         </a>
@@ -280,23 +304,12 @@ const Header = () => {
                     )}
                     <li>
                       <a href="/#" className="a-tag">
-                        <FaUserShield /> Occasion{" "}
-                        <i className="fa fa-angle-down"></i>
+                        <FaGift /> Occasion <i className="fa fa-angle-down"></i>
                       </a>
                       <ul className="submenu">
                         <li>
-                          <a href="/search-results?query=Valentine Day">
-                            Valentine's Day
-                          </a>
-                        </li>
-                        <li>
-                          <a href="/search-results?query=Rakhi">
-                            Rakhi
-                          </a>
-                        </li>
-                        <li>
-                          <a href="/search-results?query=Diwali">
-                            Diwali
+                          <a href="/search-results?query=Handpic Design">
+                            HandPic design
                           </a>
                         </li>
                         <li>
@@ -318,97 +331,49 @@ const Header = () => {
                             Mother's Day
                           </a>
                         </li>
-                        <li>
-                          <a href="/search-results?query=Womens Day ">
-                            Women's Day
-                          </a>
-                        </li>
                       </ul>
                     </li>
                     <li>
                       <a href="/#" className="a-tag">
-                        <FaUserShield />Handpicked Design{" "}
+                        <FaHandHoldingHeart /> HandPic design
                         <i className="fa fa-angle-down"></i>
                       </a>
                       <ul className="submenu">
                         <li>
-                          <a href="/search-results?query=Handpicked Design">
-                            Theme Based Design
+                          <a href="/search-results?query=Handpic Design">
+                            HandPic design
                           </a>
                         </li>
                         <li>
-                          <a href="/search-results?query=BirthDay">DIY & Artistic Gifts</a>
+                          <a href="/search-results?query=BirthDay">Birthday</a>
                         </li>
                         <li>
                           <a href="/search-results?query=FriendShip Day">
-                            Design Your Own
+                            FriendShip  Day
+                          </a>
+                        </li>
+                        <li>
+                          <a href="/search-results?query=Festival">Festival</a>
+                        </li>
+                        <li>
+                          <a href="/search-results?query=Wedding">Wedding</a>
+                        </li>
+                        <li>
+                          <a href="/search-results?query=Mothers Day ">
+                            Mother's Day
                           </a>
                         </li>
                       </ul>
-                    </li>
-                    
-                    <li>
-                      <a href="/about">
-                        <FaInfoCircle /> About Us
-                      </a>
                     </li>
                   </ul>
                 </nav>
               </div>
             </div>
-            <div className="col-xl-2 col-lg-2 col-md-6 col-8">
+            <div
+              className="col-xl-2 col-lg-2 col-md-6 col-8"
+              style={{ marginTop: "-8px" }}
+            >
               <div className="header-right-wrap">
-                <div className="header-search-small-display">
-                  <Search />
-                </div>
-                {localStorage.getItem("userEmail") ? (
-                  <div className="same-style account-satting">
-                    <a className="account-satting-active" href="/#">
-                      <i className="pe-7s-user-female"></i>
-                    </a>
-                    <div className="account-dropdown">
-                      <ul>
-                        <li>
-                          <p>
-                            {localStorage.getItem("userEmail") ? (
-                              <a onClick={() => logout()} href="/login">
-                                Logout
-                              </a>
-                            ) : (
-                              <Link to="/login">Login</Link>
-                            )}
-                          </p>
-                        </li>
-
-                        <li>
-                          <a href="/sign-up">Register</a>
-                        </li>
-                        <li>
-                          <a href="/#">Wishlist </a>
-                        </li>
-                        <li>
-                          <Link to="/myAccount">My Account</Link>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="same-style account-satting">
-                    <a className="account-satting-active" href="/#">
-                      <i className="pe-7s-user-female"></i>
-                    </a>
-                    <div className="account-dropdown">
-                      <ul>
-                        <li>
-                          <a href="/login">Login</a>
-                        </li>
-                        <li>
-                          <a href="/sign-up">Register</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                )}
                 {selectedProduct && (
                   <div className="same-style header-wishlist">
                     <a href="/#">
@@ -417,7 +382,6 @@ const Header = () => {
                     </a>
                   </div>
                 )}
-                {/* 888888888888 CART LIST 888888888888888888888888888 */}
                 <div className="same-style mega-menu cart-wrap">
                   {isProcessing && (
                     <div className="overlay">
@@ -433,16 +397,22 @@ const Header = () => {
                     </div>
                   )}
 
-                  <button className="icon-cart"> 
-
-                    {/* <i
-                      className="bi-basket" // Bootstrap bucket-style cart icon
+                  <button className="icon-cart">
+                    <i
+                      class="fa fa-shopping-cart"
+                      style={{ color: "whitesmoke" }}
                       onClick={() => (window.location.href = `/cart-page`)}
-                    ></i> */}
-                    <span onClick={() => (window.location.href = `/cart-page`)}>  🛒 </span>
+                    ></i>
 
-                    <span className="count-style">{cart && cart.length}</span>
+                    <span className="count-style">
+                      {cart &&
+                        cart.reduce(
+                          (total, item) => total + item.variantQuantity,
+                          0
+                        )}
+                    </span>
                   </button>
+
                   <div
                     className="shopping-cart-content"
                     style={{ maxHeight: "300px", overflowY: "auto" }}
@@ -465,8 +435,8 @@ const Header = () => {
                               )
                               .find(
                                 (image) =>
-                                  image?.filePath &&
-                                  !image?.filePath?.startsWith("data:video/")
+                                  image?.dataURL &&
+                                  !image?.dataURL?.startsWith("data:video/")
                               );
 
                           return (
@@ -492,7 +462,7 @@ const Header = () => {
                                     <img
                                       style={{ width: "100px" }}
                                       alt={item.productName}
-                                      src={matchingImage.filePath} // Display the matching image
+                                      src={matchingImage.dataURL} // Display the matching image
                                       className="cart-image"
                                       onClick={() =>
                                         (window.location.href = `/product?id=${item._id}&color=${item.selectedColor}&size=${item.selectedSizes}`)
@@ -594,7 +564,7 @@ const Header = () => {
                         <h3>Cart is Empty</h3>
                       )}
                     </ul>
-                    {/* *******CART TOTAL *********** */}
+
                     <div className="shopping-cart-total">
                       <h4>
                         SubTotal:
@@ -619,19 +589,16 @@ const Header = () => {
                       <Link to="/cart-page" className="default-btn">
                         view cart
                       </Link>
-                      {/* <button className="default-btn">Checkout</button> */}
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            {/* 77777777777777777777 */}
           </div>
           <div className="mobile-menu-area">
             <div className="mobile-menu" style={{ marginTop: "-" }}>
               <nav id="mobile-menu-active">
                 <ul className="menu-overflow">
-                  {/* {localStorage.getItem("isAdmin") === "true" ? ( */}
                   {isAdmin ? (
                     <li>
                       <a href="/#">
@@ -662,27 +629,24 @@ const Header = () => {
                     <></>
                   )}
                   <li>
-                    <a href="/home">HOME</a>
-                    <ul>
+                    <a href="/#">HOME</a>
+                    <ul className="submenu">
                       <li>
-                        <a href="/#">Collection</a>
-                        <ul>
-                          <li>
-                            <a href="/#">Tops</a>
-                          </li>
-                          <li>
-                            <a href="/#">Bottoms</a>
-                          </li>
-                          <li>
-                            <a href="/#">Dresses</a>
-                          </li>
-                          <li>
-                            <a href="/#">ActiveWear</a>
-                          </li>
-                          <li>
-                            <a href="/#">OuterWear</a>
-                          </li>
-                        </ul>
+                        <a href="/search-results?query=Tops">Tops</a>
+                      </li>
+                      <li>
+                        <a href="/search-results?query=Bottoms">Bottoms</a>
+                      </li>
+                      <li>
+                        <a href="/search-results?query=Dresses">Dresses</a>
+                      </li>
+                      <li>
+                        <a href="/search-results?query=ActiveWear">
+                          ActiveWear
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/search-results?query=Outerwear">OuterWear</a>
                       </li>
                     </ul>
                   </li>
@@ -690,7 +654,7 @@ const Header = () => {
                     <a href="/#">Shop</a>
                     <ul>
                       <li>
-                        <a href="/#">Company Name</a>
+                        <a href="/#">Clothing Company</a>
                         <ul>
                           <li>
                             <a href="https://www.nike.com/in ">Nike</a>
@@ -724,6 +688,9 @@ const Header = () => {
           </div>
         </div>
       </header>
+      <div className="header-search-small-display">
+        <Search />
+      </div>
     </div>
   );
 };

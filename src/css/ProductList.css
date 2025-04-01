@@ -8,10 +8,11 @@
 }
 
 .Variant-Label{
-  font-size: 15px !important;
+  font-size: 12px !important;
   color: rgb(171, 164, 164) !important;
   margin-left: 5px !important;
   width: auto !important;
+  padding: 8px;
 }
 .table-container {
   overflow-x: auto; 
@@ -118,13 +119,14 @@ input:checked + .slider:before {
 }
 
 .horizontal-scroll {
+  width: 60%;
   overflow-y: auto;
-width: 60%;
+  overflow-x: auto;
   white-space: nowrap;
   max-height: 100px;
-  max-width: 10%; 
+  max-width: 250px; 
 }
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
   .product-list th:nth-child(7), .product-list td:nth-child(7),
   .product-list th:nth-child(2), .product-list td:nth-child(2),
   .product-list th:nth-child(8), .product-list td:nth-child(8) {
@@ -134,5 +136,81 @@ width: 60%;
   .product-list th:nth-child(3),
   .product-list td:nth-child(3) {
     font-size: 13px;
+    padding: 4px;
   }
+} */
+@media only screen and (max-width: 600px) {
+  /* Adjust product list for smaller screens */
+  .product-list {
+    overflow-x: auto;
+    display: block;
+  }
+  .product-list-h2 {
+    flex-wrap: wrap !important;
+  }
+
+.product-list-search{
+  width: 70% !important;
+  margin-bottom: 8px;
+  margin-left: 15px !important;
+}
+
+  /* Hide unnecessary columns */
+  /* .product-list th:nth-child(7), .product-list td:nth-child(7),
+  .product-list th:nth-child(2), .product-list td:nth-child(2),
+  .product-list th:nth-child(8), .product-list td:nth-child(8) {
+    display: none;
+  } */
+
+  /* Adjust font sizes */
+  .product-list th, .product-list td {
+    font-size: 12px;
+    padding: 4px;
+  }
+
+  .filter div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .Variant-Label {
+    width: 100%;
+    display: block;
+    font-size: 14px;
+  }
+
+  .Variant-Label select {
+    width: 100%;
+    padding: 6px;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+
+
+  /* Fix table container overflow */
+  .table-container {
+    overflow-x: auto;
+    display: block;
+    width: 100%;
+  }
+
+
+  /* Reduce badge size */
+  .badge {
+    font-size: 10px;
+    padding: 1px 4px;
+  }
+
+  .product-list th:nth-child(4),
+  .product-list td:nth-child(4) {
+    display: none;
+  }
+.product-list-filter{
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between elements */
+  width: 100%;
+
+}
 }

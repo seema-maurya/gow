@@ -11,7 +11,7 @@ const WelcomeMessage = ({ onClose }) => {
 
   return (
     <div className="welcome-message">
-      <h1>Welcome to GOW</h1>
+      <h1>Welcome to Gallaxy Of Wishes</h1>
     </div>
   );
 };

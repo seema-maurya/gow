@@ -304,11 +304,147 @@
   
   @media (max-width: 768px) {
     .payment-form {
-      width: auto; /* Adjust width for smaller screens */
-      font-size: 10px;
+      width: 100%; /* Full width for mobile */
+      font-size: 12px; /* Smaller font size */
+      padding: 10px; /* Adjust padding */
+      background-color: #fff; /* Light background for mobile */
+      border-radius: 8px; /* Rounded corners */
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+      margin-top: 20px; /* Add space from the top */
+  
     }
-    .payment-form input[type="text"], .payment-form select {
-      width: 137px;
-    }  
+  
+    .payment-form input[type="text"],
+    .payment-form select {
+      width: 80%; /* Full width for inputs */
+      padding: 12px; /* More padding for inputs */
+      font-size: 14px; /* Larger font for readability */
+      margin-bottom: 15px; /* Space between inputs */
+      border: 1px solid #ddd; /* Light border for inputs */
+      border-radius: 6px; /* Rounded corners */
+      background-color: #f9f9f9; /* Light background */
+      transition: all 0.3s ease; /* Smooth focus transition */
+      box-sizing: border-box;
+      }
+  
+    .payment-details {
+      background-color: #f0f0f0; /* Slightly lighter for mobile */
+      border-radius: 8px;
+    }
+  
+    .payment-row {
+      flex-direction: column; 
+      margin-bottom: 15px; 
+    }
+  
+    .payment-heading,
+    .payment-value {
+      width: 100%; /* Full width */
+      margin-bottom: 10px;
+      
+    }
+  
+    .payment-heading {
+      font-size: 14px;
+      font-weight: bold;
+    }
+  
+    .payment-value {
+      font-size: 14px;
+    }
+    .filter {
+      display: flex;
+      flex-direction: column; /* Stack filter inputs vertically */
+      align-items: center;
+      margin-top: 15px; /* Add margin on top */
+    }
+  
+    .filter h2 {
+      margin: 0;
+      padding: 10px;
+      background-color: #074c96;
+      color: #bebaba;
+      font-weight: bold;
+      font-size: 18px; /* Adjust font size for mobile */
+      width: 100%; /* Ensure the heading takes full width */
+      text-align: center; /* Center the text */
+      box-sizing: border-box; /* Prevent overflow */
+  
+    }
+  
+    .filter input {
+      width:60% !important;  /* Full width input for mobile */
+      margin-left: 0;
+      margin-top: 10px; /* Space above input */
+      padding: 12px; /* Increased padding for better usability */
+      font-size: 16px; /* Slightly larger font for input */
+      border: 1px solid #ccc; /* Light border */
+      border-radius: 6px; /* Rounded corners */
+      background-color: #f9f9f9; /* Light background for input */
+      transition: all 0.3s ease; /* Smooth transition on focus */
+      box-sizing: border-box; 
+      width: 90%; /* Set input width to 90% of the container */
+      max-width: 400px; 
+      }
+      .filter input:focus {
+        border-color: #007bff; /* Blue border on focus */
+        outline: none;
+
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle shadow effect */
+        background-color: #fff; /* White background on focus */
+      }
+    
+  
+    .product-details {
+      padding: 10px;
+      background-color: #e0e0e0;
+    }
+  
+    .card-form {
+      padding: 15px;
+      width: 100%;
+      margin-top: 15px;
+    }
+  
+    .payment-form button {
+      font-size: 16px; /* Slightly larger text for readability */
+      padding: 14px 20px; /* Increased padding */
+      width: 100%; /* Full width for mobile */
+      background-color: #007bff; /* Primary blue background */
+      background-image: linear-gradient(135deg, #007bff, #0056b3); /* Gradient effect */
+      color: white;
+      border: none;
+      border-radius: 30px; /* Rounded edges */
+      cursor: pointer;
+      margin-top: 15px; /* Space above button */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+      transition: all 0.3s ease; /* Smooth transition effect */
+    }
+  
+    .payment-form button:hover {
+      background-color: #0056b3; /* Darker blue on hover */
+      background-image: linear-gradient(135deg, #0056b3, #003f7f);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+      transform: translateY(-2px); /* Button lift on hover */
+    }
+  
+    .payment-form button:active {
+      transform: translateY(0); /* Return to normal on click */
+      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); /* Slightly reduced shadow */
+    }
+  }
+  @media (max-width: 768px) {
+    /* Delivery Address */
+    .card-form strong {
+      font-size: 14px;
+    }
+  
+    .card-form .delivery-address {
+      word-wrap: break-word; /* Allow the address to break and wrap to the next line */
+      overflow-wrap: break-word; /* Ensures words break properly */
+      white-space: normal; /* Ensure text can wrap to multiple lines */
+      font-size: 14px; /* Adjust font size for mobile */
+      color: #333; /* Make sure the text is readable */
+    }
   }
   

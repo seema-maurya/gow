@@ -34,12 +34,16 @@ const PaymentInfo = () => {
         `${process.env.REACT_APP_API_URL}payment/getAll?id=${id}`
       );
       if (!response.ok) {
+        window.location.href = "/order-list";
         throw new Error("Failed to fetch paymentInfo.");
       }
       const data = await response.json();
       console.log("GETALL ID", data);
-      setPaymentInfo(data);
-      setFilteredPaymentInfo(data);
+      const paymentData = Array.isArray(data) ? data : [data];
+
+      setPaymentInfo(paymentData);
+      setFilteredPaymentInfo(paymentData);
+
       setHide(false);
       setIsLoading(false);
     } catch (error) {
@@ -79,7 +83,7 @@ const PaymentInfo = () => {
     setItemsPerPage(Number(e.target.value));
     setCurrentPage(1);
   };
-
+  console.log("filteredPaymentInfo", filteredPaymentInfo);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const totalPages = Math.ceil(filteredPaymentInfo.length / itemsPerPage);
@@ -115,6 +119,9 @@ const PaymentInfo = () => {
                 display: "flex",
                 alignItems: "center",
                 padding: "10px",
+                backgroundColor: "#074c96",
+                color: "#bebaba",
+                fontWeight: "bold",
               }}
             >
               Payment Details
@@ -155,8 +162,12 @@ const PaymentInfo = () => {
                       <br />
                       <strong>User EmailID :</strong> {payment.userEmail}
                       <br />
-                      <strong>Delivery Address :</strong>{" "}
-                      {payment.deliveryAddress}
+                      <div className="card-form">
+                        <strong>Delivery Address :</strong>
+                        <span className="delivery-address">
+                          {payment.deliveryAddress}
+                        </span>
+                      </div>
                       <br />
                       <strong>Total Amount :</strong> {payment.amountPaid}
                       <br />

@@ -21,7 +21,7 @@ const ProductImageGallery = ({
           <img
             key={imgIndex}
             className={imgIndex === 0 ? "default-img" : "hover-img"}
-            src={image.filePath}
+            src={image.dataURL}
             alt={`Image-${product._id}-${imgIndex}`}
           />
         ))}

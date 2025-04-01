@@ -41,7 +41,7 @@ const ProductList = () => {
   const [showUnapprovedReviews, setShowUnapprovedReviews] = useState(false); // State to control visibility
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(50);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
   const [searchInput, setSearchInput] = useState("");
   const [filteredPaymentInfo, setFilteredPaymentInfo] = useState([]);
   const [enteredProductName, setEnteredProductName] = useState("");
@@ -159,9 +159,17 @@ const ProductList = () => {
 
   const handleSearchInputChange = (e) => {
     setSearchInput(e.target.value.toLowerCase());
-    if (searchInput === "") {
+    if (e.target.value.toLowerCase() === "") {
       setFilteredPaymentInfo(products);
       setCurrentPage(1);
+    } else {
+      handleSearchKeyPress(
+        e,
+        products,
+        searchInput,
+        setFilteredPaymentInfo,
+        setCurrentPage
+      );
     }
   };
 
@@ -224,19 +232,6 @@ const ProductList = () => {
     <>
       {isProcessing && (
         <>
-          {/* {isLoading && (
-            <div className="overlay">
-              <div className="processing-modal">
-                <div className="spinner"></div>
-                <p>
-                  <span className="processing">Loading</span>
-                  <span className="dot">.</span>
-                  <span className="dot">.</span>
-                  <span className="dot">.</span>
-                </p>
-              </div>
-            </div>
-          )} */}
           <div className="skeleton-loader">
             <div className="skeleton-heading"></div>
             <div className="skeleton-table">
@@ -269,27 +264,37 @@ const ProductList = () => {
         </div>
       )}
       {!isProcessing && isAdmin ? (
-        <div className="product-list" style={{ padding: "10px" }}>
-          <div className="filter">
+        <div className="product-list" style={{ padding: "1px" }}>
+          <div className="filter product-list-filter">
             <h2
               style={{
                 display: "flex",
                 alignItems: "center",
-                padding: "10px",
+                padding: "5px",
                 cursor: "pointer",
-                fontSize: "16px",
+                fontSize: "14px",
+                backgroundColor: "#074c96",
+                color: "#bebaba",
+                fontWeight: "bold",
+                width: "100%",
+                lineHeight: "15px",
+                flexWrap: "wrap",
               }}
+              className="product-list-h2"
             >
               <span title="refresh the list" onClick={fetchAllProducts}>
                 Product List
               </span>
+
               <input
-                style={{ borderRadius: "30px", maxWidth: "600px" }}
+                className="product-list-search"
+                style={{ borderRadius: "30px", maxWidth: "500px" }}
                 type="text"
-                placeholder="Search by Category and SubCategory,BrandName then press enter"
+                placeholder="Search BrandName then press enter"
                 value={searchInput}
                 onChange={handleSearchInputChange}
-                onKeyPress={(e) =>
+                onKeyDown={(e) =>
+                  e.key === "Enter" &&
                   handleSearchKeyPress(
                     e,
                     products,
@@ -315,6 +320,7 @@ const ProductList = () => {
                   }}
                   title="Click to Speak"
                 />
+
                 {/* <span role="img" aria-label="microphone"></span> */}
               </div>
 
@@ -526,7 +532,8 @@ const ProductList = () => {
                                 product._id,
                                 products,
                                 setProducts,
-                                fetchAllProducts
+                                fetchAllProducts,
+                                setIsLoading
                               )
                             }
                           />

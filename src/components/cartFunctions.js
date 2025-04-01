@@ -620,13 +620,15 @@ export const handleClearCart = async (
 
 export const calculateTotal = (cart) => {
   let total = 0;
-  cart.forEach((item) => {
-    const price = parseFloat(item.variantPrice);
-    const quantity = parseInt(item.variantQuantity);
-    if (!isNaN(price) && !isNaN(quantity)) {
-      total += price * quantity;
-    }
-  });
+  if (cart) {
+    cart.forEach((item) => {
+      const price = parseFloat(item.variantPrice);
+      const quantity = parseInt(item.variantQuantity);
+      if (!isNaN(price) && !isNaN(quantity)) {
+        total += price * quantity;
+      }
+    });
+  }
   const shippingCost = 0;
   total += shippingCost;
   return total;

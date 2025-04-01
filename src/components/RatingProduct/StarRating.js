@@ -372,14 +372,14 @@ const StarRating = ({
     // Go to the previous image, wrapping around if necessary
     const newIndex = (currentIndex - 1 + userImages.length) % userImages.length;
     setCurrentIndex(newIndex); // Update to the new index
-    setLargeImage(userImages[newIndex].dataURL); // Update the large image
+    setLargeImage(userImages[newIndex].filePath); // Update the large image
   };
 
   const handleNext = () => {
     // Go to the next image, wrapping around if necessary
     const newIndex = (currentIndex + 1) % userImages.length;
     setCurrentIndex(newIndex); // Update to the new index
-    setLargeImage(userImages[newIndex].dataURL); // Update the large image
+    setLargeImage(userImages[newIndex].filePath); // Update the large image
   };
 
   const isSubmitButtonDisabled = () => {
@@ -485,12 +485,12 @@ const StarRating = ({
                       <div
                         className="image-review-item"
                         key={index}
-                        onClick={() => openImageLargeView(image.dataURL, index)}
+                        onClick={() => openImageLargeView(image, index)}
                       >
                         {image && image?.type?.startsWith("image") ? (
                           <img
                             key={index}
-                            src={image.dataURL || null}
+                            src={image.dataURL || image.filePath || null}
                             alt={`user-review-${index + 1}`}
                             style={
                               {
@@ -507,7 +507,7 @@ const StarRating = ({
                             // controls
                             >
                               <source
-                                src={image.dataURL || null}
+                                src={image.filePath || null}
                                 type={image.type}
                               />
                             </video>
@@ -539,7 +539,7 @@ const StarRating = ({
                         />
                       </div>
                     ))}
-                    {largeImage && (
+                    {largeImage?.filePath && (
                       <div
                         className="large-image-modal"
                         onClick={closeImageLargeView}
@@ -561,21 +561,21 @@ const StarRating = ({
                               &lt;
                             </button>
 
-                            {largeImage &&
-                            largeImage?.startsWith("data:image") ? (
+                            {largeImage?.filePath &&
+                            largeImage?.type?.startsWith("image") ? (
                               <img
                                 className="large-image-modal-img"
-                                src={largeImage || null}
+                                src={largeImage.filePath || null}
                                 alt="Large view"
                               />
-                            ) : largeImage &&
-                              largeImage?.startsWith("data:video") ? (
+                            ) : largeImage.filePath &&
+                              largeImage.type?.startsWith("video") ? (
                               <video className="large-image-modal-img" controls>
                                 <source
-                                  src={largeImage || null}
-                                  type={largeImage?.substring(
+                                  src={largeImage?.filePath || null}
+                                  type={largeImage?.filePath?.substring(
                                     5,
-                                    largeImage?.indexOf(";")
+                                    largeImage?.filePath?.indexOf(";")
                                   )}
                                 />
                               </video>

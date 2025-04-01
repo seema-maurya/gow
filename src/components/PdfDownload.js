@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import logo from "../icons/gow.jpg";
+// import logo from "../icons/maurya.png";
 import "../css/invoice.css";
 import axios from "axios";
 import html2pdf from "html2pdf.js";
@@ -39,7 +39,6 @@ const PdfDownload = () => {
       html2canvas: { scale: 2 },
       jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
     };
-
     // eslint-disable-next-line
     html2pdf().from(element).set(options).save();
   };
@@ -103,7 +102,16 @@ const PdfDownload = () => {
               id={`invoice-container-${invoice._id}`}
               key={invoice._id}
             >
-              <img src={logo} alt="Company Logo" className="invoice-logo" />{" "}
+              {/* <img src={logo} alt="Company Logo" className="invoice-logo" /> */}
+              <div
+                className="logo-container "
+                style={{ userSelect: "none", textDecoration: "none" }}
+              >
+                <a href="/" className="gow-logo">
+                  <span className="gow-main">GOW</span>
+                  <span className="gow-full">Galaxy of Wishes</span>
+                </a>
+              </div>
               <h1 className="invoice-header">
                 Invoice - {invoice.InvoiceNumber}
               </h1>
@@ -113,7 +121,8 @@ const PdfDownload = () => {
                 </h3>
                 <h3 style={{ color: "#666" }}>
                   <strong>
-                    GOW ,Behram Baugh Jogeshwari (west) Mumbai <br />
+                    Galaxy Of Wishes ,Behram Baugh Jogeshwari (west) Mumbai{" "}
+                    <br />
                     400-102, Maharashtra India
                   </strong>
                 </h3>

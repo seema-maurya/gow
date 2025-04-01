@@ -115,7 +115,7 @@ const handleProductImages = (
   setImageIndex((prevIndex) => ({ ...prevIndex, [productId]: newIndex }));
 };
 
-export default function SearchResults() {
+export default function SearchResults({ productName, isVisibleDefault }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
@@ -128,7 +128,7 @@ export default function SearchResults() {
   const [selectedColor, setSelectedColor] = useState({});
 
   useEffect(() => {
-    const query = searchParams.get("query");
+    const query = searchParams.get("query") || productName;
     if (query) {
       setSearchQuery(query.toLowerCase().trim());
     } else {
@@ -300,14 +300,6 @@ export default function SearchResults() {
     }
   }, [allProducts, searchQuery, sortOption]);
 
-  // useEffect(() => {
-  //   if (filteredProducts.length > 0) {
-  //     setFilteredProducts(sortProducts([...filteredProducts], sortOption));
-  //   } else if (relatedProducts.length > 0) {
-  //     setRelatedProducts(sortProducts([...relatedProducts], sortOption));
-  //   }
-  // }, [sortOption, filteredProducts, relatedProducts]);
-
   const productList = (products) => (
     <div className="product-item-list">
       {products?.map((product, index) => {
@@ -325,12 +317,6 @@ export default function SearchResults() {
           price || 0
         );
 
-        /* const discountPercentage = calculateDiscountPercentage(
-          mrpPrice || product.variants?.[0]?.sizes?.[0]?.mrpPrice || 0,
-          price || product.variants?.[0]?.sizes?.[0]?.price || 0
-        ); */
-
-        // Check if the discount is more than 50%
         const isLimitedTimeDeal = discountPercentage > 75;
 
         return (
@@ -358,7 +344,8 @@ export default function SearchResults() {
                 <img
                   // className="product-image"
                   src={
-                    product.productImages[imageIndex[product._id] || 0]?.filePath
+                    product.productImages[imageIndex[product._id] || 0]
+                      ?.filePath
                   }
                   alt={product.productName}
                   onClick={() => {
@@ -456,44 +443,48 @@ export default function SearchResults() {
 
   return (
     <div className="search-results-page">
-      <div className="sort-title-container">
-        <div className="sort-options">
-          {/* <p className="labelsssssssss" htmlFor="sort">
+      {!isVisibleDefault && (
+        <div className="sort-title-container">
+          <div className="sort-options">
+            {/* <p className="labelsssssssss" htmlFor="sort">
             Sort_by:{" "}
           </p> */}
-          <select
-            className="small-screen-select"
-            id="sort"
-            value={sortOption}
-            onChange={handleSortChange}
-          >
-            <option value="default">Default</option>
-            <option value="priceLowToHigh">Price: Low to High</option>
-            <option value="priceHighToLow">Price: High to Low</option>
-            <option value="NewestArrivals">Newest Arrivals</option>
-            <option value="ratingHighToLow">Rating: High to Low</option>
-            <option value="ratingLowToHigh">Rating: Low to High</option>
-            <option value="bestSellers">Best Sellers</option>
-            {/* Add more options if needed */}
-          </select>
-        </div>
-
-        <h2 className="results-count">
-          <>
-            {noResults
-              ? `${relatedProducts.length.toLocaleString()}`
-              : `${filteredProducts?.length.toLocaleString()}`}{" "}
-            {noResults ? "Related Results for" : "Search Results for"}{" "}
-            <span
-              className="extra-small-screen-scroll"
-              style={{ color: "red" }}
+            <select
+              className="small-screen-select"
+              id="sort"
+              value={sortOption}
+              onChange={handleSortChange}
             >
-              "{searchQuery}"
-            </span>
-          </>
-        </h2>
-      </div>
+              <option value="default">Default</option>
+              <option value="priceLowToHigh">Price: Low to High</option>
+              <option value="priceHighToLow">Price: High to Low</option>
+              <option value="NewestArrivals">Newest Arrivals</option>
+              <option value="ratingHighToLow">Rating: High to Low</option>
+              <option value="ratingLowToHigh">Rating: Low to High</option>
+              <option value="bestSellers">Best Sellers</option>
+              {/* Add more options if needed */}
+            </select>
+          </div>
 
+          <h2 className="results-count">
+            <>
+              {noResults
+                ? `${relatedProducts.length.toLocaleString()}`
+                : `${filteredProducts?.length.toLocaleString()}`}{" "}
+              {noResults ? "Related Results for" : "Search Results for"}{" "}
+              <span
+                className={
+                  searchQuery.length < 30 ? "" : "extra-small-screen-scroll"
+                }
+                style={{ color: "red" }}
+              >
+                "{searchQuery}"
+              </span>
+            </>
+          </h2>
+        </div>
+      )}
+      {isVisibleDefault && <span>You might also like</span>}
       {noResults ? (
         <div className="no-results">{productList(relatedProducts)}</div>
       ) : (

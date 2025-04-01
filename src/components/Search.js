@@ -9,7 +9,9 @@ export default function Search(props) {
   const navigate = useNavigate();
 
   const handleSearchKeyPress = (e) => {
-    if (e.key === "Enter" && searchInput.trim()) {
+    // if (e.key === "Enter" && searchInput.trim()) {
+    e.preventDefault();
+    if (searchInput.trim()) {
       const searchQuery = searchInput.toLowerCase().trim();
 
       // Use navigate to change the URL without reloading the page
@@ -55,36 +57,41 @@ export default function Search(props) {
 
   return (
     <div style={{ position: "relative", display: "inline-block" }}>
-      <input
-        className="input-home-style"
-        style={{
-          borderRadius: "30px",
-          width: "400px",
-          marginLeft: "20px",
-          backgroundColor: "white",
-          paddingLeft: "40px",
-        }}
-        type="text"
-        placeholder="Search type then press enter"
-        value={searchInput}
-        onChange={(e) => setSearchInput(e.target.value)}
-        onKeyPress={handleSearchKeyPress}
-      />
-      <FaMicrophone
-        onClick={startListening}
-        style={{
-          position: "absolute",
-          // left: "1000px",
-          right: "10px",
-          top: "45%",
-          transform: "translateY(-50%)",
-          border: "none",
-          backgroundColor: "transparent",
-          color: isListening ? "#727272" : "#ccc",
-          cursor: "pointer",
-        }}
-        title="Click to Speak"
-      />
+      <form
+        style={{ all: "unset", display: "inline" }}
+        onSubmit={handleSearchKeyPress}
+      >
+        <input
+          className="input-home-style"
+          style={{
+            borderRadius: "30px",
+            width: "400px",
+            marginLeft: "20px",
+            backgroundColor: "white",
+            paddingLeft: "10px",
+          }}
+          type="text"
+          placeholder="Search type then press enter"
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+          // onKeyPress={handleSearchKeyPress}
+          onKeyDown={(e) => e.key === "Enter" && handleSearchKeyPress(e)}
+        />
+        <FaMicrophone
+          onClick={startListening}
+          style={{
+            position: "absolute",
+            right: "10px",
+            top: "45%",
+            transform: "translateY(-50%)",
+            border: "none",
+            backgroundColor: "transparent",
+            color: isListening ? "#727272" : "#ccc",
+            cursor: "pointer",
+          }}
+          title="Click to Speak"
+        />
+      </form>
       {/* <span role="img" aria-label="microphone"></span> */}
     </div>
   );

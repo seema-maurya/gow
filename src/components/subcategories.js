@@ -242,7 +242,9 @@ const Subcategories = () => {
                       />
                     </label>
                   </div>
-                  <button type="submit">{editMode ? "Update" : "Add"}</button>
+                  <button style={{ marginBottom: "2px" }} a type="submit">
+                    {editMode ? "Update" : "Add"}
+                  </button>
                   <button type="button" onClick={handleCloseModal}>
                     Close
                   </button>

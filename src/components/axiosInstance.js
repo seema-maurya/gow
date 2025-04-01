@@ -6,6 +6,6 @@ const axiosInstance = axios.create({
     "Content-Type": "application/json",
   },
   withCredentials: false, // Set to true if backend sends cookies or credentials
-}); 
+});
 
 export default axiosInstance;

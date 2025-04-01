@@ -1,13 +1,51 @@
-.cart-item-container {
+.cart-page-container {
   display: flex;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  border: 1px solid #bebaba;
-  padding: 10px;
+  flex-wrap: wrap; /* Allows items to wrap when screen is small */
+  gap: 20px; /* Space between cart and search results */
+  align-items: flex-start;
+}
 
+/* Cart Items (60%) */
+.cart-items-section {
+  flex: 4;
 
+}
+
+.search-results-section {
+  flex: 2;
+  max-width: 30%;
+  overflow-y: auto;
+  max-height: 600px;
+  border-left: 2px solid #ddd; /* Optional: to separate sections */
+  padding-left: 20px;
+}
+@media (max-width: 768px) {
+  .cart-page-container {
+    flex-direction: column; /* Stack cart & search results */
+    display: flex;
+    position: relative; /* Maintain layout structure */
 
   }
+
+  .cart-items-section,
+  .search-results-section {
+    max-width: 100%; /* Take full width */
+    flex: 1; /* Equal width */
+    border-left: none; /* Remove border to avoid visual issues */
+  }
+}
+.cart-item-container {
+  display: flex;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  border: 1px solid #bebaba;
+  padding: 12px;
+  align-items: flex-start; 
+  background-color: white;
+  flex-direction: row;
+
+  }
+
   .cart-item:last-child {
     margin-bottom: 0; /* Remove margin-bottom for the last cart item */
   }
@@ -20,30 +58,17 @@
     cursor: pointer;
     font-weight: bold;
     color: red;
+    left: 1px;
+    position: relative;
 
-  }
-  .cart-details p {
-    margin: 5px 0;
-  }    
-
-  .cart-item-container {
-    display: flex;
-    align-items: flex-start; 
   }
   
   .cart-remove-container {
-    margin-top: 5px; /* Adjust as needed */
-    margin-right: 50px;
+    margin-top: 1px; /* Adjust as needed */
+    margin-right: 10px;
     font-size: 20px;
   }
   
-  .cart-remove {
-    /* position: absolute; */
-    top: 10;
-    left: 1px;
-    position: relative;
-    cursor: pointer;
-  }
   
   .cart-quantity-buttons {
     display: flex;
@@ -118,23 +143,20 @@
     padding-left: 20px;
   }
   .cart-details {
-    /* display: block;
-    align-items: center;
-    flex-grow: 1; */
     width: 100%;
     position: relative;
 
   }
   .cart-details p {
-    margin: 5px 0;
+    margin: 0px 0;
   }    
   .cart-images {
     display: flex;
   }
   
   .cart-image {
-    width: 160px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     object-fit: contain;
     margin-right: 20px;
     margin-inline-end :12px;
@@ -159,8 +181,8 @@
 .clear-cart-button {
 
   cursor: pointer;
-  margin-top: 20px;
-  margin-right: auto;
+  /* margin-top: 20px; */
+  margin-right: 10px;
 
 }
 
@@ -172,12 +194,15 @@
 .cart-shopping-total {
   display: grid;
   grid-template-rows: auto 1fr;
+  background-color: white;
+  border: 1px solid #bebaba;
+  border-radius: 10px;
 }
 
 .total-item {
   display: flex;
   align-items: center;
-  padding: 15px;
+  padding: 5px;
 }
 
 .label {
@@ -200,36 +225,54 @@
 .cart-heading {
   display: flex;
   justify-content: space-between;
-
+  background-color: #074c96;
   align-items: center;
   margin-bottom: 20px;
+  font-weight: bold;
 }
 
 .cart-heading-text {
   flex: 1; 
-  margin-right: 25%;
+  margin-right: 15%;
+  color: rgb(237, 236, 236);
 }
 
-
-
+.Proceed-to-pay-button{
+  position: absolute;
+margin-bottom: 10px; /* Space between button and search results */
+z-index: 1000; /* Ensure it's above other elements */
+margin-left: 15px;
+}
 
 
 @media only screen and (max-width: 600px) {
   .cart-item-container {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    align-items: flex-start;
   }
 .cart-heading-text{
-  font-size: 14px;
+  font-size: 12px;
 }
   .cart-image {
     width: 100%;
-    max-width: 100px; /* Smaller image for mobile */
-    margin-bottom: 15px;
+    max-width: 100%; /* Smaller image for mobile */
+    margin-bottom: 10px;
+    height: -1%;
+    margin-top: -50px;
   }
+.Proceed-to-pay-button{
+  padding: 10px 130px;
+  font-size: 12px;
+  width: 100% !important;
+  margin-left: -25px;
+position: absolute;
+margin-bottom: 10px; /* Space between button and search results */
+z-index: 1000; /* Ensure it's above other elements */
 
+}
   .cart-details {
-    text-align: center; /* Center-align text for better readability */
+    text-align: left; /* Center-align text for better readability */
+
   }
 
 
@@ -241,8 +284,9 @@
     font-size: 16px; /* Smaller font size for mobile */
   }
 
-  .clear-cart-button {
+  /* .clear-cart-button {
     width: 100%;
     margin-top: 20px;
-  }
+  } */
 }
+

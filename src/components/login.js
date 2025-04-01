@@ -14,7 +14,7 @@ import {
 // import tyreLogo from "../icons/tyrelogo.jpg";
 import { toast } from "react-toastify";
 import "../css/login.css";
-import logo from "../icons/gow.jpg";
+// import logo from "../icons/maurya.png";
 import GoogleSingup from "./GoogleSingup";
 // import { AuthContext } from "./AuthContext"; // Adjust the path
 // import axios from "axios";
@@ -334,11 +334,21 @@ const Login = () => {
     }, 10); // 3000 milliseconds = 3 seconds
 
     return (
-      <div>
-        <img
-          src="https://i.ibb.co/M23HzTF/9-Qgzvh-Logo-Makr.png"
-          alt="Redirecting..."
-        />
+      // <div>
+      //   <img
+      //     src="https://i.ibb.co/M23HzTF/9-Qgzvh-Logo-Makr.png"
+      //     alt="Redirecting..."
+      //   />
+      // </div>
+      <div
+        className="logo-container"
+        style={{ userSelect: "none", textDecoration: "none" }}
+      >
+        <a href="/" className="gow-logo">
+          <span className="gow-main">GOW</span>
+          <br />
+          <span className="gow-full">Galaxy of Wishes</span>
+        </a>
       </div>
     );
   }
@@ -351,7 +361,18 @@ const Login = () => {
             <div className="spinner"></div>
             <p>
               <span className="processing">
-                <img src={logo} alt="Logo" />
+                {/* <img src={logo} alt="Logo" /> */}
+                <div
+                  className="logo-container"
+                  style={{ userSelect: "none", textDecoration: "none" }}
+                >
+                  <a href="/" className="gow-logo">
+                    <span className="gow-main">GOW</span>
+                    <br />
+                    <span className="gow-full">Galaxy of Wishes</span>
+                  </a>
+                </div>
+                s
               </span>
               {/* <div className="processing">Processing</div>{" "}
                 <span className="dot">.</span>
@@ -361,7 +382,7 @@ const Login = () => {
           </div>
         </div>
       )}
-      <a href="/">
+      {/* <a href="/">
         <img
           height={100}
           width={100}
@@ -369,7 +390,16 @@ const Login = () => {
           alt="Tyre Logo"
           className="tyre-logo"
         />
-      </a>
+      </a> */}
+      <div
+        className="logo-container"
+        style={{ userSelect: "none", textDecoration: "none" }}
+      >
+        <a href="/" className="gow-logo">
+          <span className="gow-main">GOW</span>
+          <span className="gow-full">Galaxy of Wishes</span>
+        </a>
+      </div>
       <h3>
         <FaUserLock style={{ marginRight: "5px" }} />
         Login In

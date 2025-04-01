@@ -98,7 +98,11 @@ const AddCategoryModal = ({ onClose, onSuccess, category }) => {
             </label>
           </div>
           <div className="category-form-group">
-            <button type="submit" className="submit-button">
+            <button
+              style={{ marginBottom: "2px" }}
+              type="submit"
+              className="submit-button"
+            >
               {category ? "Update" : "Add"} Category
             </button>
             <button type="button" onClick={onClose}>

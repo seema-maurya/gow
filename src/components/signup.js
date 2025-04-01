@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import "../css/signup.css";
 import { toast } from "react-toastify";
-import logo from "../icons/gow.jpg";
-// import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
+// import logo from "../icons/maurya.png";
 import {
   FaUserLock,
   FaUser,
@@ -27,8 +26,7 @@ const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [redirectToHome, setRedirectToHome] = useState(false);
-  const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
-  console.log("ClientID", clientId);
+
   useEffect(() => {
     const isLoggedIn = localStorage.getItem("userId");
     if (isLoggedIn) {
@@ -156,54 +154,6 @@ const SignUp = () => {
     }, 10);
   }, []);
 
-  // const handleSuccess = async (credentialResponse) => {
-  //   try {
-  //     console.log(credentialResponse);
-  //     // Validate Google credentialResponse
-  //     if (!credentialResponse || !credentialResponse.credential) {
-  //       toast.error("Invalid Google response. Please try again.");
-  //       return;
-  //     }
-  //     const googleCredential = credentialResponse.credential;
-
-  //     // Send the token to your backend for verification
-  //     const response = await fetch(
-  //       process.env.REACT_APP_API_URL + "user/google-signin",
-  //       {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify({ token: googleCredential }),
-  //       }
-  //     );
-
-  //     if (!response.ok) {
-  //       const errorData = await response.json();
-  //       console.error("Error verifying token:", errorData);
-  //       toast.error(errorData.message || "Google Sign-In failed.");
-  //       return;
-  //     }
-
-  //     const userData = await response.json();
-  //     // Save user details in localStorage or state (based on your logic)
-  //     localStorage.setItem("userId", userData._id);
-  //     localStorage.setItem("userEmail", userData.email);
-  //     localStorage.setItem("isAdmin", userData.isAdmin);
-  //     toast.success("Google Sign-In successful!");
-  //     window.location.href = "/home"; // Redirect to the home page
-  //   } catch (error) {
-  //     console.error("Error during Google Sign-In:", error);
-  //     toast.error("An error occurred during Google Sign-In. Please try again.");
-  //   }
-  // };
-
-  // const handleError = () => {
-  //   toast.error(
-  //     "Google Sign-In failed. Please check your internet connection or try again."
-  //   );
-  // };
-
   useEffect(() => {
     if (redirectToHome) {
       redirectToHomePage();
@@ -213,10 +163,20 @@ const SignUp = () => {
   if (redirectToHome) {
     return (
       <div>
-        <img
+        {/* <img
           src="https://i.ibb.co/M23HzTF/9-Qgzvh-Logo-Makr.png"
           alt="Redirecting..."
-        />
+        /> */}{" "}
+        <div
+          className="logo-container"
+          style={{ userSelect: "none", textDecoration: "none" }}
+        >
+          <a href="/" className="gow-logo">
+            <span className="gow-main">GOW</span>
+            <br />
+            <span className="gow-full">Galaxy of Wishes</span>
+          </a>
+        </div>
       </div>
     );
   }
@@ -273,7 +233,7 @@ const SignUp = () => {
 
   return (
     <form className="forms">
-      <a href="/">
+      {/* <a href="/">
         <img
           height={100}
           width={100}
@@ -281,12 +241,20 @@ const SignUp = () => {
           alt="Tyre Logo"
           className="tyre-logo"
         />
-      </a>
+      </a> */}
+      <div
+        className="logo-container"
+        style={{ userSelect: "none", textDecoration: "none" }}
+      >
+        <a href="/" className="gow-logo">
+          <span className="gow-main">GOW</span>
+          <span className="gow-full">Galaxy of Wishes</span>
+        </a>
+      </div>
       <h3>
         <FaUserLock style={{ marginRight: "5px" }} />
         Sign Up
       </h3>
-
       <div className="mb-3">
         <label>
           <FaUser style={{ marginRight: "5px" }} />
@@ -300,7 +268,6 @@ const SignUp = () => {
           onChange={(e) => setFirstName(e.target.value)}
         />
       </div>
-
       <div className="mb-3">
         <label>
           <FaUser style={{ marginRight: "5px" }} />
@@ -314,7 +281,6 @@ const SignUp = () => {
           onChange={(e) => setLastName(e.target.value)}
         />
       </div>
-
       <div className="mb-3">
         <label>
           <FaEnvelope style={{ marginRight: "5px" }} />
@@ -328,7 +294,6 @@ const SignUp = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
-
       <div className="mb-3">
         <label>
           <FaLock style={{ marginRight: "5px" }} />
@@ -347,7 +312,6 @@ const SignUp = () => {
           </span>
         </div>
       </div>
-
       <div className="d-grid">
         <button className="btn btn-primary" onClick={signUp}>
           Sign Up

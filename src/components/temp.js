@@ -130,4 +130,3 @@ const InvoicePage = ({ paymentDetails, cart }) => {
 };
 
 export default InvoicePage;
-s;

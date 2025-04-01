@@ -1,48 +1,146 @@
+/* General styles */
 .order-list-container {
-    width: 100%;
-    padding-top: 20px; /* Add padding to create space */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.order-list-container h2 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.order-details {
+  overflow-x: auto;
+  padding: 10px;
+}
+
+.order-details table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.order-details th,
+.order-details td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.order-details th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.order-details td {
+  background-color: #fff;
+}
+
+.order-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.order-link:hover {
+  text-decoration: underline;
+}
+
+.order-details .loading {
+  text-align: center;
+  font-size: 18px;
+  color: #888;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 768px) {
+  .order-list-container {
+    padding: 15px;
   }
-  
-  .order-details {
-    width: 50%;
+
+  .order-list-container h2 {
+    font-size: 20px;
   }
-  
-  @media screen and (max-width: 768px) {
-    .order-details {
-      width: 80%;
-    }
-  }
-  
+
   .order-details table {
-    width: 100%;
-    border-collapse: collapse;
+    font-size: 14px;
   }
-  
+
   .order-details th,
   .order-details td {
     padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
   }
-  
+
+  /* Make the table stack vertically on mobile */
+  .order-details table,
+  .order-details thead,
+  .order-details tbody,
+  .order-details tr,
+  .order-details th,
+  .order-details td {
+    display: block;
+    width: 100%;
+  }
+
+  .order-details thead {
+    display: none;
+  }
+
+  .order-details tr {
+    margin-bottom: 15px;
+  }
+
+  .order-details td {
+    text-align: right;
+    padding-right: 30px;
+    position: relative;
+    word-break: break-word; /* Ensures that long words break and don't merge */
+  }
+
+  .order-details td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    font-weight: bold;
+  }
+
+  .order-details td:nth-of-type(1):before {
+    content: "SR.NO";
+  }
+  .order-details td:nth-of-type(2):before {
+    content: "Order ID";
+  }
+  .order-details td:nth-of-type(3):before {
+    content: "Invoice No";
+  }
+  .order-details td:nth-of-type(4):before {
+    content: "Created At";
+  }
+}
+
+/* Desktop Styles */
+@media only screen and (min-width: 769px) {
+  .order-list-container {
+    padding: 15px;
+  }
+
+  .order-details table {
+    font-size: 14px;
+  }
+
+  .order-details th,
+  .order-details td {
+    padding: 10px;
+  }
+
   .order-details th {
-    background-color: #134274;
-    color: #fff;
+    font-size: 16px;
   }
-  
-  .order-details tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+
+  .order-details td {
+    font-size: 16px;
   }
-  
-  .order-details tbody tr:hover {
-    background-color: #f2f2f2;
-  }
-  
-  .order-details th:last-child,
-  .order-details td:last-child {
-    border-right: none;
-  }
-  
+}

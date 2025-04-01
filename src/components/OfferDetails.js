@@ -188,20 +188,22 @@ export const OfferDetails = () => {
             the discount?
           </strong>
           <p>
-            If your payment failed while placing the order, GOW.in gives you
-            an option to revise your payment. If you revise your payment within
-            the offer duration, you will be eligible for the cashback. For more
-            information on revise payment, click <a href="##">here</a>.
+            If your payment failed while placing the order, Gallaxy Of Wishes.in
+            gives you an option to revise your payment. If you revise your
+            payment within the offer duration, you will be eligible for the
+            cashback. For more information on revise payment, click{" "}
+            <a href="##">here</a>.
           </p>
         </li>
       </ol>
       <h2>Offer Terms and Conditions</h2>
       <p>
-        This offer ("Offer") is provided by Axis Bank ("Bank") and GOW Pay
-        (India) Private Limited (formerly known as GOW Online Distribution
-        Services Private Limited) ("GOW") and made available on the website
-        www.GOW.in and the mobile site, mobile application and GOW Pay
-        Smart Stores thereof (collectively, "GOW.in").
+        This offer ("Offer") is provided by Axis Bank ("Bank") and Gallaxy Of
+        Wishes Pay (India) Private Limited (formerly known as Gallaxy Of Wishes
+        Online Distribution Services Private Limited) ("Gallaxy Of Wishes") and
+        made available on the website www.Gallaxy Of Wishes.in and the mobile
+        site, mobile application and Gallaxy Of Wishes Pay Smart Stores thereof
+        (collectively, "Gallaxy Of Wishes.in").
         {/* Include the rest of the terms and conditions */}
       </p>
     </div>
@@ -281,13 +283,13 @@ export const CanaraBankOfferDetails = () => {
         <li>
           <strong>
             Would I get the Bank offer even if I make a part payment using my
-            GOW Pay Balance?
+            Gallaxy Of Wishes Pay Balance?
           </strong>
           <p>
             Yes, the offer is available on partial payments as long as the
             minimum purchase value is spent on the Canara Credit Card. The
-            customer cannot use the EMI option if GOW Pay balance is
-            selected.
+            customer cannot use the EMI option if Gallaxy Of Wishes Pay balance
+            is selected.
           </p>
         </li>
         <li>
@@ -311,20 +313,22 @@ export const CanaraBankOfferDetails = () => {
             the cashback?
           </strong>
           <p>
-            If your payment failed while placing the order, GOW.in gives you
-            an option to revise your payment. If you revise your payment within
-            the offer duration, you will be eligible for the cashback. For more
-            information on revising payments, click <a href="##">here</a>.
+            If your payment failed while placing the order, Gallaxy Of Wishes.in
+            gives you an option to revise your payment. If you revise your
+            payment within the offer duration, you will be eligible for the
+            cashback. For more information on revising payments, click{" "}
+            <a href="##">here</a>.
           </p>
         </li>
       </ol>
       <h2>Schedule 1 - Offer Terms and Conditions</h2>
       <p>
-        This "Offer" is provided to you by Canara Bank ("Bank") and GOW Pay
-        (India) Private Limited (formerly known as GOW Online Distribution
-        Services Private Limited) ("GOW") and made available on the website
-        www.GOW.in and the mobile site and mobile application thereof
-        (collectively, "GOW.in").
+        This "Offer" is provided to you by Canara Bank ("Bank") and Gallaxy Of
+        Wishes Pay (India) Private Limited (formerly known as Gallaxy Of Wishes
+        Online Distribution Services Private Limited) ("Gallaxy Of Wishes") and
+        made available on the website www.Gallaxy Of Wishes.in and the mobile
+        site and mobile application thereof (collectively, "Gallaxy Of
+        Wishes.in").
         {/* Include the rest of the terms and conditions */}
       </p>
     </div>
@@ -376,9 +380,10 @@ export const CitibankDebitCard = () => {
 
       <h2>Offer Terms and Conditions</h2>
       <p>
-        This offer is provided by Axis Bank and GOW Pay (India) Private
-        Limited and made available on the website www.GOW.in and the mobile
-        site, mobile application and GOW Pay Smart Stores thereof.
+        This offer is provided by Axis Bank and Gallaxy Of Wishes Pay (India)
+        Private Limited and made available on the website www.Gallaxy Of
+        Wishes.in and the mobile site, mobile application and Gallaxy Of Wishes
+        Pay Smart Stores thereof.
       </p>
 
       <h2>Offer Details</h2>
@@ -543,28 +548,32 @@ export const PrivacyNotice = () => {
         <label className="paragraph">
           We appreciate your trust in us and are committed to handling your
           personal information carefully and sensibly. <br />
-          This Privacy Notice outlines how GOW Seller Services Private
-          Limited and its affiliates, including GOW.com, <br />
-          Inc. ("GOW"), collect and process your personal information through
-          GOW Services.
+          This Privacy Notice outlines how Gallaxy Of Wishes Seller Services
+          Private Limited and its affiliates, including Gallaxy Of Wishes.com,{" "}
+          <br />
+          Inc. ("Gallaxy Of Wishes"), collect and process your personal
+          information through Gallaxy Of Wishes Services.
         </label>
         <label className="paragraph">
-          By using GOW Services, you agree to our use of your personal
-          information in accordance with this Privacy Notice. <br />
+          By using Gallaxy Of Wishes Services, you agree to our use of your
+          personal information in accordance with this Privacy Notice. <br />
           We may update this notice from time to time at our discretion.
-          <br /> Your continued use of GOW Services constitutes acceptance of
-          any amendments.
+          <br /> Your continued use of Gallaxy Of Wishes Services constitutes
+          acceptance of any amendments.
         </label>
         <h2>Personal Information Collection</h2>
-        <h3>What Personal Information About Customers Does GOW Collect?</h3>
+        <h3>
+          What Personal Information About Customers Does Gallaxy Of Wishes
+          Collect?
+        </h3>
         <table>
           <tr>
             <td>
               <strong>Information You Give Us:</strong>
             </td>
             <td>
-              We collect information you provide to us in relation to GOW
-              Services.
+              We collect information you provide to us in relation to Gallaxy Of
+              Wishes Services.
             </td>
           </tr>
           <tr>
@@ -573,7 +582,7 @@ export const PrivacyNotice = () => {
             </td>
             <td>
               We automatically collect and store certain information about your
-              use of GOW Services.
+              use of Gallaxy Of Wishes Services.
             </td>
           </tr>
           <tr>
@@ -583,7 +592,10 @@ export const PrivacyNotice = () => {
             <td>We may receive information about you from other sources. </td>
           </tr>
         </table>
-        <h3>For What Purposes Does GOW Use Your Personal Information?</h3>
+        <h3>
+          For What Purposes Does Gallaxy Of Wishes Use Your Personal
+          Information?
+        </h3>
         <label style={{ fontSize: "20px" }}>
           We use your personal information for various purposes, including:
         </label>
@@ -594,7 +606,9 @@ export const PrivacyNotice = () => {
               <td>- Purchase and delivery of products and services.</td>
             </tr>
             <tr>
-              <td>- Provide, troubleshoot, and improve GOW Services.</td>
+              <td>
+                - Provide, troubleshoot, and improve Gallaxy Of Wishes Services.
+              </td>
             </tr>
             <tr>
               <td>- Recommendations and personalization.</td>

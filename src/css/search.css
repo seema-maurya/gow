@@ -244,6 +244,10 @@
   border: 1px solid #ccc; /* Optional for visual indication */
 
 }
+.small-screen-select{
+  width: 150px;
+margin-bottom: 2px;
+}
 @media only screen and (max-width: 768px) {
   .small-screen-select {
     width: 75px !important;
@@ -252,13 +256,14 @@
   height: 2px;
   }
   .extra-small-screen-scroll{
-    display: inline-block;
+    display: none;
     max-width: 200px; /* Adjust based on the maximum width you prefer */
     overflow-x: auto; /* Enable horizontal scroll if text overflows */
     word-break: break-word; /* Break long words into new lines */
     white-space: pre-wrap; /* Allow wrapping and preserve spaces */
-    padding: 6px; /* Optional for spacing */
+    padding: 5px; /* Optional for spacing */
     border: 1px solid #ccc; /* Optional for visual indication */
+    font-size: 8px;
   
   }
 

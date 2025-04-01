@@ -30,7 +30,7 @@ const ReviewList = () => {
   const [searchInput, setSearchInput] = useState("");
   const [filteredPaymentInfo, setFilteredPaymentInfo] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(20);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
   const [modalImages, setModalImages] = useState([]); // State for modal images
   const [currentImageIndex, setCurrentImageIndex] = useState(-1); // Index for currently selected image
   const [selectedRating, setSelectedRating] = useState("");
@@ -157,9 +157,18 @@ const ReviewList = () => {
           </div>
         </div>
       ) : reviews.length > 0 ? (
-        <div className="product-list">
+        <div className="product-list" style={{ padding: "5px" }}>
           {productId ? (
-            <h2 className="filter">
+            <h2
+              className="filter"
+              style={{
+                fontSize: "20px",
+                backgroundColor: "#074c96",
+                color: "#bebaba",
+                fontWeight: "bold",
+                cursor: "pointer",
+              }}
+            >
               Newest Reviews for Product ${productId}00{" "}
               <input
                 style={{ borderRadius: "30px", maxWidth: "600px" }}
@@ -167,7 +176,8 @@ const ReviewList = () => {
                 placeholder="Search by E-mail  then press enter"
                 value={searchInput}
                 onChange={handleSearchInputChange}
-                onKeyPress={(e) =>
+                onKeyDown={(e) =>
+                  e.key === "Enter" &&
                   handleSearchKeyPress(
                     e,
                     filteredReviews,
@@ -179,7 +189,15 @@ const ReviewList = () => {
               />
             </h2>
           ) : (
-            <h2 className="filter">
+            <h2
+              className="filter"
+              style={{
+                fontSize: "20px",
+                backgroundColor: "#074c96",
+                color: "#bebaba",
+                fontWeight: "bold",
+              }}
+            >
               Newest of All Reviews{" "}
               <input
                 style={{ borderRadius: "30px", maxWidth: "600px" }}

@@ -2088,7 +2088,7 @@ a.default-btn {
 }
 @media only screen and (min-width: 1200px) and (max-width: 1365px) {
   .header-padding-1 .container-fluid {
-    padding: 0 15px;
+    padding: 0 10px;
   }
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -2173,7 +2173,7 @@ a.default-btn {
 }
 .main-menu nav ul li {
   display: inline-block;
-  padding: 0 15px;
+  padding: 0 9px;
   position: relative;
 }
 .main-menu nav ul li ul.submenu {
@@ -2355,16 +2355,16 @@ a.default-btn {
 }
 @media only screen and (min-width: 1200px) and (max-width: 1365px) {
   .main-menu nav ul li {
-    padding: 0 10px;
+    padding: 0 5px;
   }
 }
 .main-menu nav ul li > a {
   font-size: 15px;
-  color: #555252;
-  font-weight: 500;
+  color: whitesmoke;
+  font-weight: 600;
   letter-spacing: 0.8px;
   display: inline-block;
-  line-height: 94px;
+  line-height: 70px;
 }
 .main-menu nav ul li > a i {
   font-size: 15px;
@@ -2373,8 +2373,16 @@ a.default-btn {
   top: 0px;
 }
 .main-menu nav ul li:hover a {
-  color: #a749ff;
+  color: white;
 }
+.a-tag {
+  transition: transform 0.3s ease-in-out; /* Smooth animation */
+}
+
+.a-tag:hover {
+  transform: scale(1.1); /* Slightly enlarge the icon */
+}
+
 .main-menu.menu-white nav ul {
   text-align: left;
 }
@@ -2508,7 +2516,7 @@ a.default-btn {
   position: absolute;
   text-align: left;
   top: 190%;
-  width: 125px;
+  width: 100px;
   z-index: 220;
   display: none;
 }

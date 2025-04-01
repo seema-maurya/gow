@@ -13,7 +13,7 @@ const ProductPage = ({ productId, disabled }) => {
   const fetchProductRatings = async (productId) => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}reviews/getProductAverageRatings`,
+        `${process.env.REACT_APP_API_URL}review/getProductAverageRatings`,
         {
           params: { productId },
         }
@@ -27,7 +27,7 @@ const ProductPage = ({ productId, disabled }) => {
         // productRatings[productId]
       );
     } catch (error) {
-      // toast.error("Failed to fetch product average ratings.");
+      toast.error("Failed to fetch product average ratings.");
     }
   };
   console.log(productRatings?.averageRating);

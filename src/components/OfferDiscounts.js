@@ -58,22 +58,35 @@ export default class OfferDiscounts extends Component {
                       className="mega-menu"
                       style={{
                         top: "-200px",
-                        overflowY: "auto",
+                        maxHeight: "400px", // Set max height here
+                        overflowY: "auto", // Enable scrolling
                         width: "600px",
-                        paddingBottom: "20px",
+                        paddingBottom: "10px",
+                        paddingTop: "1px",
                       }}
                     >
                       <div className="" style={{ width: "" }}>
                         <li>
-                          <ul>
-                            <li className="mega-menu-title">
+                          <ul style={{ paddingLeft: "0" }}>
+                            <li
+                              className="mega-menu-title"
+                              style={{ marginBottom: "1px" }}
+                            >
                               <h3 style={{ fontWeight: "bold" }}>
                                 Bank Offers
                               </h3>
                               <br />
                             </li>
                             {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((offer) => (
-                              <li key={offer}>
+                              <li
+                                key={offer}
+                                style={{
+                                  marginBottom: "1px",
+                                  padding: "0px 0",
+                                  fontSize: "14px",
+                                  lineHeight: "1",
+                                }}
+                              >
                                 <strong>Offer {offer}</strong>
                                 {offer === 1 && <CitibankP />}
                                 {offer === 2 && <CanaraP />}
@@ -88,13 +101,16 @@ export default class OfferDiscounts extends Component {
                                   href="##"
                                   className="see-details"
                                   onClick={() => this.toggleDetails(offer)}
+                                  style={{
+                                    fontSize: "10px",
+                                    color: "#007bff",
+                                  }}
                                 >
-                                  {" "}
                                   {this.state.showDetails[offer]
                                     ? "Hide"
                                     : "See details"}
                                 </a>
-                                <hr />
+                                <hr style={{ margin: "2px 0" }} />
                                 {this.state.showDetails[offer] && (
                                   <React.Fragment>
                                     <br />

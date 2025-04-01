@@ -1,63 +1,55 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../css/OrderList.css";
+import Pagination from "./Pagination/Pagination";
 
-class OrderList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      orders: [],
-      loading: true,
-      selectedProduct: null,
-      isEditModalOpen: false,
-    };
-  }
+const OrderList = () => {
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
 
-  componentDidMount() {
-    this.fetchOrders();
-  }
+  useEffect(() => {
+    fetchOrders();
+  }, []);
 
-  fetchOrders = async () => {
+  const fetchOrders = async () => {
     try {
       const response = await fetch(
-        process.env.REACT_APP_API_URL + "payment/getAll"
+        process.env.REACT_APP_API_URL + "payment/getOrderList"
       );
       if (!response.ok) {
         throw new Error("Failed to fetch orders.");
       }
       const data = await response.json();
       console.log("ORDERLIST", data);
-      this.setState({ orders: data.reverse(), loading: false });
+      setOrders(data.reverse());
+
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching orders:", error.message);
-      this.setState({ loading: false });
+      setLoading(false);
     }
   };
-
-  // handleClick = (orderDetails) => {
-  //   this.props.history.push({
-  //     pathname: `/payment-info?id=${orderDetails._id}`,
-  //     state: { orderDetails },
-  //   });
-  // };
-
-  handleClick = (orderDetails) => {
-    this.setState({ selectedProduct: orderDetails, isEditModalOpen: true });
-    console.log(orderDetails);
-  };
-  handleModalClose = () => {
-    this.setState({ isEditModalOpen: false });
+  const handleItemsPerPageChange = (e) => {
+    setItemsPerPage(Number(e.target.value));
+    setCurrentPage(1);
   };
 
-  render() {
-    const { orders, loading } = this.state;
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const totalPages = Math.ceil(orders.length / itemsPerPage);
+  const currentItems = orders.slice(indexOfFirstItem, indexOfLastItem);
 
-    return (
-      <div className="order-list-container">
-        <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
-          Order List
-        </h2>
-        <div className="order-details">
+  return (
+    <div className="order-list-container">
+      {/* <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Order List</h2> */}
+      <h2>Order List</h2>
+
+      <div className="order-details">
+        {loading ? (
+          <div className="loading">Loading...</div>
+        ) : (
           <table>
             <thead>
               <tr>
@@ -75,17 +67,15 @@ class OrderList extends Component {
                   </td>
                 </tr>
               ) : (
-                orders.map((order, index) => (
+                currentItems.map((order, index) => (
                   <tr key={order._id}>
                     <td>{index + 1}</td>
                     <td>
-                      <Link to={`/payment-info?id=${order._id}`}>
-                        <p
-                          style={{ color: "blue" }}
-                          onClick={() => this.handleClick(order)}
-                        >
-                          {order._id}
-                        </p>
+                      <Link
+                        to={`/payment-info?id=${order._id}`}
+                        className="order-link"
+                      >
+                        <p style={{ color: "blue" }}>{order._id}</p>
                       </Link>
                     </td>
                     <td>{order?.InvoiceNumber}</td>
@@ -95,10 +85,20 @@ class OrderList extends Component {
               )}
             </tbody>
           </table>
-        </div>
+        )}
       </div>
-    );
-  }
-}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        indexOfFirstItem={indexOfFirstItem}
+        indexOfLastItem={indexOfLastItem}
+        filteredPaymentInfo={orders}
+        itemsPerPage={itemsPerPage}
+        setCurrentPage={setCurrentPage}
+        handleItemsPerPageChange={handleItemsPerPageChange}
+      />
+    </div>
+  );
+};
 
 export default OrderList;

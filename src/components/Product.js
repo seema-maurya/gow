@@ -47,7 +47,7 @@ const Product = ({
                           className={
                             imgIndex === 0 ? "default-img" : "hover-img"
                           }
-                          src={image.filePath}
+                          src={image.dataURL}
                           alt={`Imagee ${index}-${imgIndex}`}
                           key={imgIndex}
                         />

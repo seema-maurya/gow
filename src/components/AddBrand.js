@@ -149,22 +149,22 @@ const AddBrand = () => {
     setEditingBrandId(null); // Store the brand ID
   };
 
-  const handleDeleteBrand = async (brandId) => {
-    try {
-      const response = await axios.delete(
-        process.env.REACT_APP_API_URL + `brand/delete/${brandId}`
-      );
-      if (response.status === 200) {
-        toast.success("Brand deleted successfully");
-        fetchBrands(); // Refresh the list after deletion
-      } else {
-        toast.error("Failed to delete brand");
-      }
-    } catch (error) {
-      console.error("Error deleting brand:", error);
-      toast.error("Error deleting brand");
-    }
-  };
+  // const handleDeleteBrand = async (brandId) => {
+  //   try {
+  //     const response = await axios.delete(
+  //       process.env.REACT_APP_API_URL + `brand/delete/${brandId}`
+  //     );
+  //     if (response.status === 200) {
+  //       toast.success("Brand deleted successfully");
+  //       fetchBrands(); // Refresh the list after deletion
+  //     } else {
+  //       toast.error("Failed to delete brand");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error deleting brand:", error);
+  //     toast.error("Error deleting brand");
+  //   }
+  // };
 
   const handleItemsPerPageChange = (e) => {
     setItemsPerPage(Number(e.target.value));
@@ -343,6 +343,7 @@ const AddBrand = () => {
                           <button
                             onClick={handleAddOrUpdateBrand}
                             disabled={isProductNameEmpty}
+                            style={{ marginBottom: "2px" }}
                           >
                             {editMode ? "Update" : "Add"}{" "}
                           </button>

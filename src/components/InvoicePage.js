@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import logo from "../icons/gow.jpg";
+// import logo from "../icons/maurya.png";
 import "../css/invoice.css";
 import { calculateDiscountPercentage } from "./VariantReusable.js"; // Import reusable functions
 
@@ -46,8 +46,16 @@ class InvoicePage extends Component {
 
     return (
       <div className="invoice-container">
-        <img src={logo} alt="Company Logo" className="invoice-logo" />{" "}
-        {/* Add the image */}
+        {/* <img src={logo} alt="Company Logo" className="invoice-logo" /> */}
+        <div
+          className="logo-container invoice-logo"
+          style={{ userSelect: "none", textDecoration: "none" }}
+        >
+          <a href="/" className="gow-logo">
+            <span className="gow-main">GOW</span>
+            <span className="gow-full">Galaxy of Wishes</span>
+          </a>
+        </div>
         <h1 className="invoice-header">Invoice - {InvoiceNumber}</h1>
         <div>
           <h3 style={{ color: "#666" }}>
@@ -55,7 +63,7 @@ class InvoicePage extends Component {
           </h3>
           <h3 style={{ color: "#666" }}>
             <strong>
-              GOW ,Behram Baugh Jogeshwari (west) Mumbai <br />
+              Gallaxy Of Wishes ,Behram Baugh Jogeshwari (west) Mumbai <br />
               400-102, Maharashtra India
             </strong>
           </h3>

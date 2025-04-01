@@ -19,12 +19,12 @@ const About = () => {
         mapOptions
       );
 
-      const GOWLocation = { lat: 19.15607743583916, lng: 72.84691536297058 }; // Replace with actual coordinates
+      const mauryaLocation = { lat: 19.15607743583916, lng: 72.84691536297058 }; // Replace with actual coordinates
       new window.google.maps.Marker({
-        position: GOWLocation,
+        position: mauryaLocation,
         map: map,
-        title: "GOW",
-        label: "GOW",
+        title: "Gallaxy Of Wishes",
+        label: "Gallaxy Of Wishes",
       });
     };
 
@@ -37,17 +37,15 @@ const About = () => {
   return (
     <div className="about">
       <div className="about-header">
-        <h2>Welcome to GOW</h2>
+        <h2>Welcome to Gallaxy Of Wishes</h2>
         <p className="about-description">
-          {/* Founded in 1995, GOW is one of India’s leading clothing brands and
-          the flagship company of the RPG GROUP. */}
-          Welcome to [Your Website Name], the ultimate destination for finding thoughtful, personalized, and ready-to-ship gifts for every special occasion. Whether it’s a birthday, anniversary, festival, wedding, corporate event, or just a simple "thinking of you" gesture, we help you express your emotions with gifts that create lasting memories.
+          Founded in 1995, Gallaxy Of Wishes is one of India’s leading clothing
+          brands and the flagship company of the RPG GROUP.
         </p>
-        <a href="/" className="about-link">
+        <a href="/#" className="about-link">
           Explore Our Collection
         </a>
-        {/* <p className="tagline">Discover Style, Discover Happiness</p> */}
-        <p className="tagline">Celebrate Every Moment with the Perfect Gift!</p>
+        <p className="tagline">Discover Style, Discover Happiness</p>
       </div>
       <div className="about-content">
         <div className="about-img">
@@ -63,32 +61,19 @@ const About = () => {
           </a>
         </div>
         <div className="about-text">
-          <p>The Heart Behind the Gifts
-At [Your Website Name], we believe that every gift tells a story. The joy of gifting isn’t just in the item itself but in the love, thought, and emotions behind it. Our journey started with a simple idea—to make gifting effortless, meaningful, and memorable. From handmade creations to elegantly crafted gift boxes, we bring you a seamless gifting experience right at your fingertips.
-Create a truly one-of-a-kind gift hamper, thoughtfully tailored to the preferences of your loved one. Simply share a few details about them, and we will craft a bespoke selection of handpicked treasures—blending artisanal charm with budget friendly brands. Whether it's a heartfelt keepsake or a luxurious surprise, we take care of every detail, ensuring your gift is as meaningful and unique as the person receiving it
-What Makes Us Special?
-🌟 Curated Collection for Every Occasion
-We take the guesswork out of gifting by offering a wide range of gifts tailored to suit different occasions, personalities, and preferences. Whether you're looking for handmade keepsakes, luxury hampers, trendy gifts, or last-minute options, we have you covered.
-💖 Personalized Touch, Unforgettable Memories
-Add a personal touch to your gifts with custom engravings, handwritten notes, monograms, and tailor-made packaging. Every personalized gift we create is designed to make your loved ones feel extra special.
-🎁 Handmade with Love & Care
-For those who appreciate handcrafted beauty, our custom-made and artisanal gifts are designed with creativity, skill, and attention to detail. 
-Our Vision & Mission
-🔹 Our Vision – To revolutionize the gifting experience by providing a seamless, personalized, and joy-filled shopping experience for every customer.</p>
           <p>
             Driven by the purpose of helping the world move safely and smartly,
-            GOW provides world-class products and services across 110+ states
-            in India.
+            Gallaxy Of Wishes provides world-class products and services across
+            110+ states in India.
             <br />
             Say hello to happiness! ₹11,315 Cr. of annual revenue.
           </p>
           <div className="contact-info">
-            <strong>Contact number:</strong> +91 86572 ***** <br />
+            <strong>Contact number:</strong> 7506471096 <br />
             <strong>Address:</strong> Behram Baugh, Jogeshwari West, Mumbai
           </div>
           <p className="clothing-category">
             We have a wide range of clothing for:
-            📦 Shop now and make someone’s day brighter with the perfect gift!
           </p>
         </div>
       </div>
@@ -107,7 +92,7 @@ Our Vision & Mission
             <li>
               <a
                 className="fa fa-linkedin"
-                href="https://www.linkedin.com/in/ashwini-kumar-GOW-531554205/"
+                href="https://www.linkedin.com/in/ashwini-kumar-maurya-531554205/"
               >
                 &nbsp; LinkedIn
               </a>
@@ -138,8 +123,8 @@ Our Vision & Mission
       ;
       <div className="map-container">
         <iframe
-          title="GOW Company Location"
-          label="GOW"
+          title="Gallaxy Of Wishes Company Location"
+          label="Gallaxy Of Wishes"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.204071176514!2d72.8443036!3d19.1561614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b7241bee06c7%3A0x1d4f20f78e971dfc!2sASHTHA%20HOSPITAL!5e0!3m2!1sen!2sin!4v1620690224334!5m2!1sen!2sin"
           // src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.204071176514!2d72.84537081491185!3d19.144239454791748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b856d44518c3%3A0x590ddaf2fc1d3955!2sBehram%20Baugh%2C%20Jogeshwari%20West%2C%20Mumbai%2C%20Maharashtra%20400060!5e0!3m2!1sen!2sin!4v1620690224334!5m2!1sen!2sin"
           allowfullscreen=""

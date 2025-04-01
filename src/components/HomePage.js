@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaMinus, FaBan } from "react-icons/fa";
-import axios from "axios";
 import "../css/home.css";
 
 import { toast } from "react-toastify";
@@ -11,12 +10,12 @@ import LZString from "lz-string";
 import {
   handleVariantAddToCart,
   handleRemoveFromCart2Variant,
-  fetchAllCart,
+  // fetchAllCart,
   renderShareOptions,
   renderColorOptions,
 } from "./cartFunctions";
-import logo from "../icons/gow.jpg";
-import ChatBox from "./ChatBox";
+// import logo from "../icons/gow.jpg";
+// import ChatBox from "./ChatBox";
 import { Link } from "react-router-dom";
 // import Product from "./Product.js";
 import {
@@ -31,6 +30,8 @@ import {
   useImageZoom,
 } from "./VariantReusable.js";
 import axiosInstance from "./axiosInstance.js";
+import { useCart } from "./CartContext.js";
+import FeedbackForm from "./FeedbackForm.js";
 
 const HomePage = () => {
   const imgRef = useRef();
@@ -38,21 +39,20 @@ const HomePage = () => {
   const [cx, setCx] = useState(0);
   const [cy, setCy] = useState(0);
   const { handleImageLoad } = useImageZoom(imgRef, resultRef, setCx, setCy);
+  const { cart, setCart, selectedSizeVariants, setSelectedSizeVariants } =
+    useCart();
 
   const [products, setProducts] = useState([]);
 
-  const [cart, setCart] = useState([]);
+  // const [cart, setCart] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showShareOptions, setShowShareOptions] = useState(null);
-
-  const [isFormVisible, setIsFormVisible] = useState(false);
-  const [feedback, setFeedback] = useState("");
 
   const [selectedColors, setSelectedColors] = useState({});
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [loading, setLoading] = useState(true);
 
-  const [selectedSizeVariants, setSelectedSizeVariants] = useState("");
+  // const [selectedSizeVariants, setSelectedSizeVariants] = useState("");
   const [selectedOptions, setSelectedOptions] = useState({});
   const [isProcessing, setIsProcessing] = useState(false);
   const [userId, setUserId] = useState("");
@@ -61,7 +61,7 @@ const HomePage = () => {
     const initialize = async () => {
       await fetchAllProducts();
       await setVariantAll(products, setSelectedOptions); // Await the async call
-      await fetchAllCart(setCart, setSelectedSizeVariants);
+      // await fetchAllCart(setCart, setSelectedSizeVariants);
 
       const userIds = localStorage.getItem("userId");
       if (userIds) {
@@ -85,7 +85,7 @@ const HomePage = () => {
 
     initialize();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // Use an empty dependency array to ensure it runs only once
+  }, [setCart]); // Use an empty dependency array to ensure it runs only once
 
   useEffect(() => {
     if (cart.length > 0 && !userId) {
@@ -178,46 +178,6 @@ const HomePage = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const userEmail = localStorage.getItem("userEmail");
-      if (!userEmail) {
-        toast.info("Please login for submitting feedback");
-        return;
-      }
-      const feedbackData = { feedback };
-      if (userEmail) {
-        feedbackData.userEmail = userEmail;
-      }
-
-      const response = await axios.post(
-        process.env.REACT_APP_API_URL + "feedback/addFeedback",
-        feedbackData
-      );
-      console.log("Feedback submitted:", response);
-      setIsFormVisible(false);
-      if (response.status === 201) {
-        toast.success("Success");
-        setFeedback("");
-      }
-    } catch (error) {
-      if (error.response) {
-        console.error("Error response data:", error.response.data);
-        console.error("Error response status:", error.response.status);
-        console.error("Error response headers:", error.response.headers);
-      } else if (error.request) {
-        console.error("Error request data:", error.request);
-      } else {
-        console.error("Error message:", error.message);
-      }
-    }
-  };
-
-  const handleChange = (e) => {
-    setFeedback(e.target.value);
-  };
-
   const isProductInCart = (product) => {
     return cart.some((item) => item._id === product._id);
   };
@@ -235,10 +195,6 @@ const HomePage = () => {
   const fetchProductDetails = (selectedProduct) => {
     console.log("Selected Product:", selectedProduct);
     setSelectedProduct(selectedProduct);
-  };
-
-  const toggleFormVisibility = () => {
-    setIsFormVisible(!isFormVisible);
   };
 
   const addToCartVariant = async (
@@ -335,9 +291,7 @@ const HomePage = () => {
                             ? image.color === selectedColors[prod._id]
                             : true
                         )
-                        .filter(
-                          (image) => !image?.filePath?.startsWith("data:video/")
-                        )
+                        .filter((image) => !image?.type?.startsWith("video"))
                         .map((image, imgIndex) => (
                           <img
                             className={
@@ -660,7 +614,7 @@ const HomePage = () => {
               </div>
             </div>
           )}
-          <ChatBox />
+          {/* <ChatBox /> */}
           <header
             style={{
               position: "fixed",
@@ -701,13 +655,8 @@ const HomePage = () => {
                   <h4>Mother's Day</h4>
                 </a>
                 <a href="#product-7" data-bs-toggle="tab">
-                  <h4>Kids</h4>
+                  <h4>Kid's</h4>
                 </a>
-                <a href="#product-8" data-bs-toggle="tab">
-                  <h4>Christmas Day</h4>
-                </a>
-              
-                
               </div>
               <div className="tab-content jump">
                 <div className="tab-pane" id="product-1">
@@ -737,10 +686,6 @@ const HomePage = () => {
                 <div className="tab-pane" id="product-7">
                   {renderProductList("Kids", products)}
                 </div>
-                <div className="tab-pane" id="product-8">
-                  {renderProductList("Christmas Day", products)}
-                </div>
-                
               </div>
             </div>
           </div>
@@ -759,14 +704,22 @@ const HomePage = () => {
                 <div className="col-lg-2 col-md-4 col-sm-4">
                   <div className="copyright mb-30">
                     <div className="footer-logo">
-                      <a href="/#">
+                      {/* <a href="/#">
                         <img
                           alt=""
-                          // src="https://i.ibb.co/M23HzTF/9-Qgzvh-Logo-Makr.png"
                           src={logo}
                           style={{ width: "120px", height: "auto" }}
                         />
-                      </a>
+                      </a> */}
+                      <div
+                        className="logo-container"
+                        style={{ userSelect: "none", textDecoration: "none" }}
+                      >
+                        <a href="/#" className="gow-logo">
+                          <span className="gow-main">GOW</span>
+                          <span className="gow-full">Galaxy of Wishes</span>
+                        </a>
+                      </div>
                     </div>
                     <p>
                       © 2024 <a href="/#">GOW</a>.<br /> All Rights Reserved
@@ -834,7 +787,7 @@ const HomePage = () => {
                         <li>
                           <a
                             className="fa fa-linkedin"
-                            href="https://www.linkedin.com/in/ashwini-kumar-GOW-531554205/"
+                            href="https://www.linkedin.com/in/ashwini-kumar-maurya-531554205/"
                           >
                             &nbsp; linkedin
                           </a>
@@ -856,30 +809,7 @@ const HomePage = () => {
                           </a>
                         </li>
                         <li>
-                          <button
-                            className="feedback-button"
-                            id="feedback-button"
-                            onClick={toggleFormVisibility}
-                          >
-                            Leave Feedback
-                          </button>
-                          {isFormVisible && (
-                            <div className="feedback-form">
-                              <form onSubmit={handleSubmit}>
-                                <label htmlFor="feedback">Your Feedback:</label>
-                                <textarea
-                                  id="feedback"
-                                  name="feedback"
-                                  rows="4"
-                                  cols="50"
-                                  value={feedback}
-                                  onChange={handleChange}
-                                  placeholder="Enter your feedback here..."
-                                ></textarea>
-                                <input type="submit" value="Submit" />
-                              </form>
-                            </div>
-                          )}
+                          <FeedbackForm />
                         </li>
                       </ul>
                     </div>
@@ -1387,7 +1317,7 @@ const HomePage = () => {
                                     </li>
                                     <br />
                                     <li>
-                                      <a href="https://www.linkedin.com/in/ashwini-kumar-GOW-531554205/">
+                                      <a href="https://www.linkedin.com/in/ashwini-kumar-maurya-531554205/">
                                         <i className="fa fa-linkedin"></i>
                                       </a>
                                     </li>

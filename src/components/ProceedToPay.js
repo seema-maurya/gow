@@ -17,8 +17,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 // import jsPDF from "jspdf";
 import html2pdf from "html2pdf.js";
 import InvoicePage from "./InvoicePage.js";
+import { useCart } from "./CartContext.js";
 // import { error } from "ajv/dist/vocabularies/applicator/dependencies.js";
-// import logo from "../icons/GOW.png";
+// import logo from "../icons/maurya.png";
 
 const ProceedToPay = () => {
   const [deliveryAddress, setDeliveryAddress] = useState("");
@@ -39,7 +40,7 @@ const ProceedToPay = () => {
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [paymentSubmitted, setPaymentSubmitted] = useState(false);
   const [paymentDetails, setPaymentDetails] = useState("");
-  const [cart, setCart] = useState([]);
+  // const [cart, setCart] = useState([]);
   const [selectedBank, setSelectedBank] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
   const [mobileNumberError, setMobileNumberError] = useState("");
@@ -50,6 +51,7 @@ const ProceedToPay = () => {
   const [upiLink, setUpiLink] = useState("");
   const [qrCode, setQrCode] = useState("");
   const [transactionId, setTransactionId] = useState("");
+  const { cart, setCart } = useCart();
 
   const { SubTotal, finalAmount, Tax, initialCart, size } =
     location.state || {};
@@ -122,45 +124,30 @@ const ProceedToPay = () => {
   };
 
   const handleDownloadPDF = async () => {
-    const element = document.getElementById("payment-container");
+    return new Promise((resolve, reject) => {
+      const element = document.getElementById("payment-container");
 
-    const options = {
-      filename: "invoice.pdf",
-      image: { type: "jpeg", quality: 0.98 },
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
-    };
-
-    // eslint-disable-next-line
-    html2pdf().from(element).set(options).save();
+      const options = {
+        filename: "GallaxyOfWishesInvoice.pdf",
+        image: { type: "jpeg", quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+      };
+      try {
+        setTimeout(async () => {
+          console.log("PDF generated");
+          await html2pdf().from(element).set(options).save();
+          console.log("PDF download triggered successfully.");
+          resolve();
+        }, 3000); // Adjust the delay as per your logic
+      } catch (error) {
+        console.error("Error generating PDF:", error.message);
+        alert("Failed to download the PDF. Please try again.");
+      }
+    });
   };
 
-  // const handleProceedToPay = () => {
-  //   setIsProcessing(true);
-
-  //   setTimeout(() => {
-  //     setPaymentSubmitted(true);
-  //     setIsProcessing(false);
-  //     setPaymentDetails({
-  //       method: paymentMethod,
-  //       upiOption: upiPaymentOption,
-  //       cardDetails: {
-  //         name,
-  //         cardNumber,
-  //         expiryMonth,
-  //         expiryYear,
-  //       },
-  //       totalQuantity,
-  //       SubTotal,
-  //       finalAmount,
-  //     });
-  //   }, 2000);
-  // };
-
   const handlePayment = async () => {
-    // const { SubTotal, finalAmount, cart, Tax, size } = props;
-    // const products = cart.map((item) => item._id);
-
     const currentDate = new Date();
     const currentYear = currentDate.getFullYear();
     const currentMonth = currentDate.getMonth() + 1;
@@ -228,7 +215,7 @@ const ProceedToPay = () => {
         );
         return;
       }
-      if (selectedUPIApp && !mobileNumber) {
+      if (selectedUPIApp && (!mobileNumber || mobileNumber.length !== 10)) {
         setMobileNumberError("Please enter a 10 digit mobile number");
         return false;
       } else {
@@ -243,7 +230,7 @@ const ProceedToPay = () => {
     setIsProcessing(true);
     await new Promise((resolve) => setTimeout(resolve, 2000));
     setIsProcessing(false);
-
+    let paymentId;
     try {
       const response = await fetch(
         process.env.REACT_APP_API_URL + "payment/add",
@@ -285,7 +272,9 @@ const ProceedToPay = () => {
           }),
         }
       );
-      console.log("Response status:", response.status);
+      const res = await response.json();
+      paymentId = res.paymentId;
+      console.log("Response status:", res);
 
       if (!response.ok) {
         throw new Error("Failed to store payment information.");
@@ -305,11 +294,10 @@ const ProceedToPay = () => {
         );
       }
       if (userId) {
-        handleClearCart(setCart, true);
+        handleClearCart(setCart, true, null);
       } else {
         localStorage.removeItem("cart");
       }
-
       resetFields(); // Reset all fields
     } catch (error) {
       console.error("Error storing payment information:", error.message);
@@ -317,12 +305,12 @@ const ProceedToPay = () => {
     }
     try {
       const response = await fetch(
-        process.env.REACT_APP_API_URL + "payment/getAll"
+        `${process.env.REACT_APP_API_URL}payment/getAll?id=${paymentId}`
       );
       const data = await response.json();
-      const data1 = data.reverse();
-      console.log("Now", data1[0]);
-      const productsInfo = data1[0].products
+      const data1 = data;
+      console.log("Now", data1);
+      const productsInfo = data1.products
         .map((product, index) => {
           return `Product ${index + 1}:
     Brand Name: ${product.brandName}
@@ -353,9 +341,9 @@ const ProceedToPay = () => {
       // Example usage
       const formattedDeliveryAddress = splitAddress(deliveryAddress);
       const paymentDetails = `
-        Invoice : ${data1[0].InvoiceNumber}
-        Date: ${data1[0].createdAt}
-        OrderID: ${data1[0]._id}
+        Invoice : ${data1.InvoiceNumber}
+        Date: ${data1.createdAt}
+        OrderID: ${data1._id}
         User Email: ${userEmail}
         Delivery Address: ${formattedDeliveryAddress}
         Payment Method: ${paymentMethod}
@@ -367,7 +355,7 @@ const ProceedToPay = () => {
     `;
       console.log("PAYMENTDETAILS", paymentDetails);
       setPaymentSubmitted(true);
-      setPaymentDetails(data1[0]);
+      setPaymentDetails(data1);
       setIsVisiblity(false);
       setCart([]);
       setTimeout(async () => {
@@ -375,7 +363,7 @@ const ProceedToPay = () => {
       }, 100); // Wait for 100 milliseconds
       setTimeout(() => {
         navigate("/", { replace: true });
-      }, 10000); // Delay of 3000 milliseconds (3 seconds)
+      }, 10000);
     } catch (fetchError) {
       console.error("Error fetching payment details:", fetchError.message);
       alert("Could not retrieve payment details. Please try again later.");
@@ -395,6 +383,53 @@ const ProceedToPay = () => {
     setPaymentUpdate("");
   };
 
+  const fetchAddress = async (latitude, longitude) => {
+    try {
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
+      );
+      const data = await response.json();
+      if (data.display_name) {
+        setDeliveryAddress(data.display_name);
+      } else {
+        alert("Failed to fetch address. Try again.");
+      }
+    } catch (error) {
+      console.error("Error fetching address:", error);
+      alert("Unable to fetch address.");
+    }
+  };
+
+  // Function to get user's current location
+  const getCurrentLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          fetchAddress(latitude, longitude);
+        },
+        (error) => {
+          console.error("Error getting location:", error);
+          alert("Location access denied. Enable GPS and try again.");
+        },
+        { enableHighAccuracy: true }
+      );
+    } else {
+      alert("Geolocation is not supported by your browser.");
+    }
+  };
+  const notifyUserOnUPI = () => {
+    if (!/^\w+@\w+$/.test(upiID)) {
+      alert("Invalid UPI ID format. Please enter in format: username@bank");
+      return;
+    }
+
+    const transactionID = `TXN${Date.now()}`;
+    const deepLink = `upi://pay?pa=${"9702359576@ptsbi"}&pn=ASHISH%20RAJBALI%20MAURYA&mc=&tid=${transactionID}&tr=${transactionID}&tn=Payment&am=${finalAmount}&cu=INR`;
+
+    // Open the UPI app with the deep link
+    window.location.href = deepLink;
+  };
   const handleCVVChange = (e) => {
     const cvv = e.target.value.replace(/\D/g, "");
     setCvv(cvv);
@@ -556,7 +591,12 @@ const ProceedToPay = () => {
               onChange={(e) => setDeliveryAddress(e.target.value)}
               placeholder="Enter your delivery address"
             />{" "}
-            <FaMapMarkerAlt />
+            <button
+              onClick={getCurrentLocation}
+              style={{ marginLeft: "10px", cursor: "pointer" }}
+            >
+              <FaMapMarkerAlt />
+            </button>
             <br />
             <strong>
               <FaCreditCard /> Select Payment Method
@@ -736,6 +776,21 @@ const ProceedToPay = () => {
                           or PhoneNumber@BankName
                         </p>
                       )}
+                      <br />
+                      <button
+                        onClick={notifyUserOnUPI}
+                        style={{
+                          marginTop: "10px",
+                          padding: "10px",
+                          background: "green",
+                          color: "white",
+                          border: "none",
+                          borderRadius: "5px",
+                          cursor: "pointer",
+                        }}
+                      >
+                        Notify on UPI App
+                      </button>
                     </>
                   )}
                   {upiPaymentOption === "GenerateUPILink" && (

@@ -192,55 +192,55 @@ export const handleSearchKeyPress = (
   setFilteredPaymentInfo,
   setCurrentPage
 ) => {
+  e.preventDefault();
+
   const trimmedSearchInput = searchInput.trim(); // Trim the input here
 
   if (trimmedSearchInput) {
-    if (e.key === "Enter") {
-      const searchFields = [
-        "_id",
-        "categoryName",
-        "subCategoryName",
-        "brandName",
-        "productName",
-        "productQuantity",
-        "productPrice",
-        "productMrpPrice",
-        "userEmail",
-        "createdAt",
-        "isApproved",
-        "comment",
-        "InvoiceNumber",
-        "rating",
-      ];
+    const searchFields = [
+      "_id",
+      "categoryName",
+      "subCategoryName",
+      "brandName",
+      "productName",
+      "productQuantity",
+      "productPrice",
+      "productMrpPrice",
+      "userEmail",
+      "createdAt",
+      "isApproved",
+      "comment",
+      "InvoiceNumber",
+      "rating",
+    ];
 
-      const searchTerms = trimmedSearchInput
-        .split(" ")
-        .map((term) => term.toLowerCase().trim())
-        .filter((term) => term.length > 0);
+    const searchTerms = trimmedSearchInput
+      .split(" ")
+      .map((term) => term.toLowerCase().trim())
+      .filter((term) => term.length > 0);
 
-      const filteredPaymentInfo = products.filter((prod) => {
-        return searchFields.some((field) => {
-          const fieldValue = prod[field];
+    const filteredPaymentInfo = products.filter((prod) => {
+      return searchFields.some((field) => {
+        const fieldValue = prod[field];
 
-          if (typeof fieldValue === "number") {
-            return searchTerms.some((term) =>
-              fieldValue.toString().includes(term)
-            );
-          } else if (typeof fieldValue === "string") {
-            return searchTerms.some((term) =>
-              fieldValue.toLowerCase().includes(term)
-            );
-          } else if (typeof fieldValue === "boolean") {
-            const boolStr = fieldValue ? "true" : "false";
-            return searchTerms.some((term) => boolStr.includes(term));
-          }
-          return false;
-        });
+        if (typeof fieldValue === "number") {
+          return searchTerms.some((term) =>
+            fieldValue.toString().includes(term)
+          );
+        } else if (typeof fieldValue === "string") {
+          return searchTerms.some((term) =>
+            fieldValue.toLowerCase().includes(term)
+          );
+        } else if (typeof fieldValue === "boolean") {
+          const boolStr = fieldValue ? "true" : "false";
+          return searchTerms.some((term) => boolStr.includes(term));
+        }
+        return false;
       });
+    });
 
-      setFilteredPaymentInfo(filteredPaymentInfo);
-      setCurrentPage(1);
-    }
+    setFilteredPaymentInfo(filteredPaymentInfo);
+    setCurrentPage(1);
   }
 };
 
@@ -248,28 +248,39 @@ export const handleApprovalToggle = async (
   productId,
   products,
   setProducts,
-  fetchAllProducts
+  fetchAllProducts,
+  setIsLoading
 ) => {
+  setIsLoading(true);
   const productToUpdate = products.find((p) => p._id === productId);
 
-  if (!productToUpdate) return;
+  if (!productToUpdate) {
+    toast.error("Product not found.");
+    return;
+  }
 
   const updatedApprovalStatus = !productToUpdate.isApproved;
 
-  setProducts((prevProducts) =>
-    prevProducts.map((p) =>
-      p._id === productId ? { ...p, isApproved: updatedApprovalStatus } : p
-    )
-  );
+  // setProducts((prevProducts) =>
+  //   prevProducts.map((p) =>
+  //     p._id === productId ? { ...p, isApproved: updatedApprovalStatus } : p
+  //   )
+  // );
 
   try {
     const response = await axios.put(
-      process.env.REACT_APP_API_URL +
-        `product/updateApprovalStatus/${productId}`,
+      `${process.env.REACT_APP_API_URL}product/updateApprovalStatus/${productId}`,
       { isApproved: updatedApprovalStatus }
     );
 
     if (response.status === 200) {
+      setProducts((prevProducts) =>
+        prevProducts.map((p) =>
+          p._id === productId ? { ...p, isApproved: updatedApprovalStatus } : p
+        )
+      );
+
+      await fetchAllProducts();
       toast.success(
         `Product ${
           updatedApprovalStatus ? "approved" : "disapproved"
@@ -290,10 +301,22 @@ export const handleApprovalToggle = async (
         p._id === productId ? { ...p, isApproved: !updatedApprovalStatus } : p
       )
     );
-    toast.error("Error updating approval status.");
-  }
 
-  await fetchAllProducts();
+    if (error.response) {
+      // Server responded with a status other than 2xx
+      toast.error(
+        `Failed to update approval status. Server response: ${error.response.statusText}`
+      );
+    } else if (error.request) {
+      // Request was made but no response received
+      toast.error("Network error: No response from server.");
+    } else {
+      // Something else happened
+      toast.error("An unexpected error occurred.");
+    }
+  } finally {
+    setIsLoading(false); // Set loading to false after API call (success or failure)
+  }
 };
 
 export const fetchUnapprovedReviews = async (isAdmin, setUnapprovedReviews) => {

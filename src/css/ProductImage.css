@@ -330,7 +330,7 @@ button svg {
     margin-bottom: 10px;
   }
   
-  select,
+  
   input[type='text'],
   textarea {
     width: 100%;
@@ -341,7 +341,15 @@ button svg {
     box-sizing: border-box;
     font-size: 12px;
   }
-  
+  select{
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 12px;
+  }
   button {
     padding: 10px 20px;
     background-color: #007bff;

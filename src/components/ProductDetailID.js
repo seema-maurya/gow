@@ -9,7 +9,7 @@ import {
   // handleSizeChange,
   // handleRefreshPage,
   calculateTotal,
-  fetchAllCart,
+  // fetchAllCart,
   // getProductDefaultSize,
   handleVariantAddToCart,
   handleRemoveFromCart2Variant,
@@ -27,6 +27,7 @@ import {
 
 import { FaMinus, FaPlus, FaShareAlt } from "react-icons/fa";
 import ProductPage from "./RatingProduct/ProductPage";
+import { useCart } from "./CartContext.js";
 
 const ProductDetailID = ({ product, selectedColorChoose, sizeChoose }) => {
   const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 }); // Track mouse position for zoom
@@ -37,17 +38,16 @@ const ProductDetailID = ({ product, selectedColorChoose, sizeChoose }) => {
     setIsZoomed(isHovering);
   };
 
-  // Initialize the main image state
-  // const [mainImage, setMainImage] = useState(
-  //   product?.productImages[0]?.filePath
-  // );
   const [mainImage, setMainImage] = useState("");
+  const [mainImageType, setMainImageType] = useState("");
   const [hoveredColor, setHoveredColor] = useState(""); // Add state to track hovered image color
   const [isVisible] = useState(true);
-  const [selectedSizes, setSelectedSizes] = useState(
-    JSON.parse(localStorage.getItem("selectedSizes")) || {}
-  );
-  const [cart, setCart] = useState([]);
+  // const [selectedSizes, setSelectedSizes] = useState(
+  //   JSON.parse(localStorage.getItem("selectedSizes")) || {}
+  // );
+  // const [cart, setCart] = useState([]);
+  const { cart, setCart, selectedSizes, setSelectedSizes } = useCart();
+
   const [selectedSizeVariants, setSelectedSizeVariants] = useState(""); // Track selected color today
   const [selectedColor, setSelectedColor] = useState(""); // Track selected color today
   const [quantityPurchased, setQuantityPurchased] = useState("");
@@ -81,9 +81,9 @@ const ProductDetailID = ({ product, selectedColorChoose, sizeChoose }) => {
     quantityPurchased
   );
 
-  useEffect(() => {
-    fetchAllCart(setCart, setSelectedSizes);
-  }, []);
+  // useEffect(() => {
+  //   fetchAllCart(setCart, setSelectedSizes);
+  // }, []);
 
   useEffect(() => {
     if (product.variants && product.variants.length > 0) {
@@ -95,6 +95,7 @@ const ProductDetailID = ({ product, selectedColorChoose, sizeChoose }) => {
 
         if (selectedImage) {
           setMainImage(selectedImage.filePath);
+          setMainImageType(selectedImage);
         }
 
         // Find the matching variant for the selected color
@@ -116,6 +117,7 @@ const ProductDetailID = ({ product, selectedColorChoose, sizeChoose }) => {
         }
       } else {
         setMainImage(product?.productImages[0]?.filePath);
+        setMainImageType(product?.productImages[0]);
         const defaultSizeVariant = product.variants.find(
           (variant) => variant.color === defaultColor
         )?.sizes[0]?.size;
@@ -132,6 +134,7 @@ const ProductDetailID = ({ product, selectedColorChoose, sizeChoose }) => {
 
   const handleImageHover = (imageUrl, color, variantColor) => {
     setMainImage(imageUrl);
+    setMainImageType(imageUrl);
     setHoveredColor(color);
     setSelectedColor(color);
 
@@ -176,6 +179,7 @@ const ProductDetailID = ({ product, selectedColorChoose, sizeChoose }) => {
 
   const handleImageClick = (imageUrl) => {
     setMainImage(imageUrl);
+    setMainImageType(imageUrl);
   };
 
   const variantDiscount = calculateDiscountPercentage(
@@ -293,7 +297,7 @@ const ProductDetailID = ({ product, selectedColorChoose, sizeChoose }) => {
                       hoveredColor.trim().toLowerCase()
                   )
                   .map((image, index) => {
-                    const isVideo = image?.filePath?.startsWith("data:video/");
+                    const isVideo = image?.type?.startsWith("video");
                     return !isVideo ? (
                       <img
                         key={`${index}`}
@@ -331,7 +335,7 @@ const ProductDetailID = ({ product, selectedColorChoose, sizeChoose }) => {
                 onMouseEnter={() => handleZoomToggle(true)}
                 onMouseLeave={() => handleZoomToggle(false)}
               >
-                {mainImage && mainImage?.startsWith("data:video/") ? (
+                {mainImage && mainImageType?.type?.startsWith("video") ? (
                   <video
                     src={mainImage || null}
                     controls // Enables play/pause and other video controls
@@ -341,7 +345,7 @@ const ProductDetailID = ({ product, selectedColorChoose, sizeChoose }) => {
                 ) : (
                   <img src={mainImage} alt={product.productName} />
                 )}
-                {isZoomed && !mainImage?.startsWith("data:video/") && (
+                {isZoomed && !mainImageType?.type?.startsWith("video") && (
                   <img
                     src={mainImage || null}
                     alt={product.productName}
@@ -501,7 +505,8 @@ const ProductDetailID = ({ product, selectedColorChoose, sizeChoose }) => {
                 <div className="thumbnail-container">
                   {uniqueColors &&
                     uniqueColors?.map((image, index) => {
-                      const isVideo = image?.filePath?.startsWith("data:video/");
+                      const isVideo =
+                        image?.filePath?.startsWith("data:video/");
 
                       return !isVideo ? (
                         <img
