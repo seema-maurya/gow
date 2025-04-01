@@ -308,9 +308,15 @@ const Header = () => {
                       </a>
                       <ul className="submenu">
                         <li>
-                          <a href="/search-results?query=Handpic Design">
-                            HandPic design
+                          <a href="/search-results?query=Valentine's Day">
+                            Valentine's Day
                           </a>
+                        </li>
+                        <li>
+                          <a href="/search-results?query=Rakhi">Rakhi</a>
+                        </li>
+                        <li>
+                          <a href="/search-results?query=Diwali">Diwali</a>
                         </li>
                         <li>
                           <a href="/search-results?query=BirthDay">Birthday</a>
@@ -340,27 +346,18 @@ const Header = () => {
                       </a>
                       <ul className="submenu">
                         <li>
-                          <a href="/search-results?query=Handpic Design">
-                            HandPic design
+                          <a href="/search-results?query=Theme Based Design">
+                            Theme Based Design
                           </a>
                         </li>
                         <li>
-                          <a href="/search-results?query=BirthDay">Birthday</a>
-                        </li>
-                        <li>
-                          <a href="/search-results?query=FriendShip Day">
-                            FriendShip  Day
+                          <a href="/search-results?query=DIY & Artistic Gifts">
+                            DIY & Artistic Gifts
                           </a>
                         </li>
                         <li>
-                          <a href="/search-results?query=Festival">Festival</a>
-                        </li>
-                        <li>
-                          <a href="/search-results?query=Wedding">Wedding</a>
-                        </li>
-                        <li>
-                          <a href="/search-results?query=Mothers Day ">
-                            Mother's Day
+                          <a href="/search-results?query=Design Your Own">
+                            Design Your Own
                           </a>
                         </li>
                       </ul>
