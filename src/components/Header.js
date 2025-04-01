@@ -224,7 +224,7 @@ const Header = () => {
                           </p>
                         </li>
                         <li>
-                          <a href="/about">about us</a>
+                          {/* <a href="/about">about us</a> */}
                         </li>
                         <li>{/* <a href="/#">cart page</a> */}</li>
                         <li>
@@ -285,8 +285,18 @@ const Header = () => {
                       </a>
                       <ul className="submenu">
                         <li>
-                          <a href="/search-results?query=Handpic Design">
-                            HandPic design
+                          <a href="/search-results?query=Valentine Day">
+                            Valentine's Day
+                          </a>
+                        </li>
+                        <li>
+                          <a href="/search-results?query=Rakhi">
+                            Rakhi
+                          </a>
+                        </li>
+                        <li>
+                          <a href="/search-results?query=Diwali">
+                            Diwali
                           </a>
                         </li>
                         <li>
@@ -309,13 +319,34 @@ const Header = () => {
                           </a>
                         </li>
                         <li>
-                          <a href="/search-results?query=Mothers Day ">
-                            Mother's Day
+                          <a href="/search-results?query=Womens Day ">
+                            Women's Day
                           </a>
                         </li>
                       </ul>
                     </li>
-
+                    <li>
+                      <a href="/#" className="a-tag">
+                        <FaUserShield />Handpicked Design{" "}
+                        <i className="fa fa-angle-down"></i>
+                      </a>
+                      <ul className="submenu">
+                        <li>
+                          <a href="/search-results?query=Handpicked Design">
+                            Theme Based Design
+                          </a>
+                        </li>
+                        <li>
+                          <a href="/search-results?query=BirthDay">DIY & Artistic Gifts</a>
+                        </li>
+                        <li>
+                          <a href="/search-results?query=FriendShip Day">
+                            Design Your Own
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                    
                     <li>
                       <a href="/about">
                         <FaInfoCircle /> About Us

@@ -707,9 +707,7 @@ const HomePage = () => {
                   <h4>Christmas Day</h4>
                 </a>
               
-                <a href="#product-9"  style={{marginTop:"20px"}} data-bs-toggle="tab">
-                  <h4>Handpicked Design</h4>
-                </a>
+                
               </div>
               <div className="tab-content jump">
                 <div className="tab-pane" id="product-1">
@@ -742,9 +740,7 @@ const HomePage = () => {
                 <div className="tab-pane" id="product-8">
                   {renderProductList("Christmas Day", products)}
                 </div>
-                <div className="tab-pane" id="product-9">
-                  {renderProductList("Handpicked Design", products)}
-                </div>
+                
               </div>
             </div>
           </div>
